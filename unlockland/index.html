@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UnlockLand — وثيقة الرؤية الاستراتيجية · The Lens</title>
+<title>UnlockLand — Strategic Insight Document · The Lens</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -48,13 +48,13 @@ body {
 /* ── SIDEBAR NAV ── */
 .sidenav {
   position: fixed;
-  right: 0; top: 0;
+  left: 0; top: 0;
   width: 220px; height: 100vh;
   background: var(--navy);
   padding: 2rem 1.25rem;
   display: flex; flex-direction: column;
   z-index: 100;
-  border-left: 1px solid rgba(77,221,223,0.2);
+  border-right: 1px solid rgba(77,221,223,0.2);
 }
 .sidenav-logo {
   font-size: 13px; font-weight: 600; letter-spacing: .12em;
@@ -69,7 +69,7 @@ body {
   color: rgba(255,255,255,0.55); font-size: 12px;
   text-decoration: none; margin-bottom: 2px;
   transition: all .18s; cursor: pointer;
-  border: none; background: none; width: 100%; text-align: right;
+  border: none; background: none; width: 100%; text-align: left;
 }
 .nav-item:hover, .nav-item.active {
   background: rgba(77,221,223,0.12);
@@ -86,7 +86,7 @@ body {
 
 /* ── MAIN CONTENT ── */
 .main {
-  margin-right: 220px;
+  margin-left: 220px;
   min-height: 100vh;
 }
 
@@ -165,8 +165,8 @@ body {
 }
 .exec-box::before {
   content: ''; position: absolute;
-  top: 0; right: 0; width: 200px; height: 200px;
-  background: radial-gradient(circle at top right, rgba(77,221,223,0.1), transparent 70%);
+  top: 0; left: 0; width: 200px; height: 200px;
+  background: radial-gradient(circle at top left, rgba(77,221,223,0.1), transparent 70%);
 }
 .exec-box p {
   color: rgba(255,255,255,0.8); line-height: 1.85;
@@ -306,13 +306,13 @@ body {
 .opp-item {
   background: var(--surface); border-radius: 8px;
   border: 1px solid var(--border);
-  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
   padding: 1rem 1.25rem; margin-bottom: .5rem;
   display: flex; gap: 1rem; align-items: flex-start;
 }
-.opp-item.c { border-right-color: var(--critical); }
-.opp-item.i { border-right-color: var(--important); }
-.opp-item.m { border-right-color: var(--monitor); }
+.opp-item.c { border-left-color: var(--critical); }
+.opp-item.i { border-left-color: var(--important); }
+.opp-item.m { border-left-color: var(--monitor); }
 .opp-num {
   font-size: 22px; font-weight: 300; color: var(--border-strong);
   font-family: var(--mono); flex-shrink: 0; line-height: 1;
@@ -339,7 +339,7 @@ body {
 /* ── IMPLICATIONS TABLE ── */
 .impl-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
 .impl-table th {
-  padding: 10px 14px; text-align: right;
+  padding: 10px 14px; text-align: left;
   font-size: 10px; font-weight: 600; letter-spacing: .1em;
   text-transform: uppercase; color: var(--text-muted);
   background: rgba(10,1,64,0.03);
@@ -472,7 +472,7 @@ body {
 /* ── MOBILE HAMBURGER ── */
 .hamburger {
   display: none;
-  position: fixed; top: 14px; right: 14px; z-index: 200;
+  position: fixed; top: 14px; left: 14px; z-index: 200;
   width: 42px; height: 42px; border-radius: 10px;
   background: var(--navy); border: 1px solid rgba(77,221,223,0.3);
   flex-direction: column; align-items: center; justify-content: center;
@@ -491,13 +491,13 @@ body {
 @media (max-width: 768px) {
   .hamburger { display: flex; }
   .sidenav {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: transform .25s ease;
     width: 260px;
   }
   .sidenav.open { transform: translateX(0); }
   .nav-overlay.open { display: block; }
-  .main { margin-right: 0; }
+  .main { margin-left: 0; }
   .section { padding: 2rem 1.25rem; }
   .cover { padding: 4rem 1.5rem 2.5rem; }
   .narrative-grid { grid-template-columns: 1fr; }
@@ -515,7 +515,7 @@ body {
 
 /* ── CONTACT BUTTON (FLOATING) ── */
 .contact-fab {
-  position: fixed; bottom: 28px; left: 28px; z-index: 150;
+  position: fixed; bottom: 28px; right: 28px; z-index: 150;
   background: var(--cyan); color: var(--navy);
   border: none; border-radius: 50px;
   padding: 13px 22px; font-size: 13px; font-weight: 600;
@@ -530,7 +530,7 @@ body {
   transform: translateY(-2px);
 }
 @media (max-width: 768px) {
-  .contact-fab { bottom: 20px; left: 16px; padding: 11px 18px; font-size: 12px; }
+  .contact-fab { bottom: 20px; right: 16px; padding: 11px 18px; font-size: 12px; }
 }
 
 /* ── CONTACT MODAL ── */
@@ -552,7 +552,7 @@ body {
   to   { opacity:1; transform: translateY(0); }
 }
 .modal-close {
-  position: absolute; top: 14px; left: 14px;
+  position: absolute; top: 14px; right: 14px;
   background: none; border: none; cursor: pointer;
   font-size: 20px; color: var(--text-muted); line-height: 1;
   padding: 4px 8px; border-radius: 6px;
@@ -587,7 +587,7 @@ body {
 /* ── PRINT ── */
 @media print {
   .sidenav, .hamburger, .contact-fab, .modal-overlay, .nav-overlay { display: none !important; }
-  .main { margin-right: 0; }
+  .main { margin-left: 0; }
   .section { break-inside: avoid; }
 }
 </style>
@@ -599,22 +599,22 @@ body {
   <div class="sidenav-logo">
     <span>ODI Engine · Ali Alghamdi</span>
   </div>
-  <div class="nav-label">التحليل</div>
-  <button class="nav-item active" onclick="navTo('cover',this)"><span class="nav-dot"></span>الغلاف</button>
-  <button class="nav-item" onclick="navTo('exec',this)"><span class="nav-dot"></span>الخلاصة التنفيذية</button>
-  <button class="nav-item" onclick="navTo('jobmap',this)"><span class="nav-dot"></span>خريطة الوظيفة</button>
-  <button class="nav-item" onclick="navTo('narrative',this)"><span class="nav-dot"></span>الرواية</button>
-  <div class="nav-label">المخرجات</div>
+  <div class="nav-label">Analysis</div>
+  <button class="nav-item active" onclick="navTo('cover',this)"><span class="nav-dot"></span>Cover</button>
+  <button class="nav-item" onclick="navTo('exec',this)"><span class="nav-dot"></span>Executive Summary</button>
+  <button class="nav-item" onclick="navTo('jobmap',this)"><span class="nav-dot"></span>Job Map</button>
+  <button class="nav-item" onclick="navTo('narrative',this)"><span class="nav-dot"></span>Narrative</button>
+  <div class="nav-label">Outputs</div>
   <button class="nav-item" onclick="navTo('landscape',this)"><span class="nav-dot"></span>Opportunity Landscape</button>
-  <button class="nav-item" onclick="navTo('oppmap',this)"><span class="nav-dot"></span>خريطة الأولويات</button>
-  <button class="nav-item" onclick="navTo('implications',this)"><span class="nav-dot"></span>ماذا تبني</button>
-  <button class="nav-item" onclick="navTo('validation',this)"><span class="nav-dot"></span>مسار التحقق</button>
-  <button class="nav-item" onclick="navTo('nextsteps',this)"><span class="nav-dot"></span>الخطوات التالية</button>
+  <button class="nav-item" onclick="navTo('oppmap',this)"><span class="nav-dot"></span>Priority Map</button>
+  <button class="nav-item" onclick="navTo('implications',this)"><span class="nav-dot"></span>What to Build</button>
+  <button class="nav-item" onclick="navTo('validation',this)"><span class="nav-dot"></span>Validation Path</button>
+  <button class="nav-item" onclick="navTo('nextsteps',this)"><span class="nav-dot"></span>Next Steps</button>
   <div class="nav-grade">INSIGHT-GRADE<br>Track A · May 2026</div>
 </nav>
 
 <!-- HAMBURGER -->
-<button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="القائمة">
+<button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
   <span></span><span></span><span></span>
 </button>
 <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
@@ -622,32 +622,32 @@ body {
 <!-- CONTACT FAB -->
 <button class="contact-fab" onclick="openContact()">
   <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-  تواصل معنا
+  Contact Us
 </button>
 
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal" onclick="handleOverlayClick(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeContact()">✕</button>
-    <div class="modal-title">تواصل مع The Lens</div>
-    <div class="modal-sub">أرسل بياناتك وسنتواصل معك خلال 24 ساعة</div>
+    <div class="modal-title">Contact The Lens</div>
+    <div class="modal-sub">Send your details and we will contact you within 24 hours</div>
     <div id="contactForm">
       <div class="form-group">
-        <label class="form-label">الاسم الكامل *</label>
-        <input class="form-input" id="fName" type="text" placeholder="علي الغامدي" />
+        <label class="form-label">Full Name *</label>
+        <input class="form-input" id="fName" type="text" placeholder="Ali Alghamdi" />
       </div>
       <div class="form-group">
-        <label class="form-label">رقم الجوال *</label>
+        <label class="form-label">Mobile Number *</label>
         <input class="form-input" id="fPhone" type="tel" placeholder="+966 5X XXX XXXX" />
       </div>
       <div class="form-group">
-        <label class="form-label">البريد الإلكتروني *</label>
+        <label class="form-label">Email Address *</label>
         <input class="form-input" id="fEmail" type="email" placeholder="name@company.com" />
       </div>
-      <button class="form-submit" onclick="submitContact()">إرسال الطلب</button>
+      <button class="form-submit" onclick="submitContact()">Submit Request</button>
     </div>
     <div class="form-success" id="formSuccess">
-      ✅ تم الإرسال! سنتواصل معك قريباً.
+      ✅ Sent. We will contact you soon.
     </div>
   </div>
 </div>
@@ -662,35 +662,35 @@ body {
 
   <div class="cover-accent"></div>
   <div class="cover-tag">The Lens · ODI-Light Analysis · 2026</div>
-  <h1 class="cover-title">أي سوق عقاري يجب أن تدخله<br><strong>UnlockLand</strong> أولاً؟</h1>
-  <p class="cover-sub">دراسة احتياجات محلل الجدوى العقارية عبر منهجية Outcome-Driven Innovation</p>
+  <h1 class="cover-title">Which Real Estate Market Should<br><strong>UnlockLand</strong> Enter First?</h1>
+  <p class="cover-sub">A study of real estate feasibility analyst needs using Outcome-Driven Innovation</p>
   <div class="cover-meta">
-    <div class="cover-meta-item"><strong>العميل</strong>UnlockLand — PropTech AI Platform</div>
-    <div class="cover-meta-item"><strong>Job Executor</strong>محلل الجدوى / Development Analyst</div>
-    <div class="cover-meta-item"><strong>المنهجية</strong>ODI-Light · Track A</div>
-    <div class="cover-meta-item"><strong>التاريخ</strong>مايو 2026</div>
-    <div class="cover-meta-item"><strong>المُعِد</strong>The Lens · علي الغامدي</div>
+    <div class="cover-meta-item"><strong>Client</strong>UnlockLand — PropTech AI Platform</div>
+    <div class="cover-meta-item"><strong>Job Executor</strong>Feasibility Analyst / Development Analyst</div>
+    <div class="cover-meta-item"><strong>Methodology</strong>ODI-Light · Track A</div>
+    <div class="cover-meta-item"><strong>Date</strong>May 2026</div>
+    <div class="cover-meta-item"><strong>Prepared by</strong>The Lens · Ali Alghamdi</div>
   </div>
 </section>
 
 <!-- EXEC SUMMARY -->
 <section class="section" id="exec">
-  <div class="section-tag">الخلاصة التنفيذية</div>
-  <h2 class="section-title">الرؤية في ثلاثة أسطر</h2>
+  <div class="section-tag">Executive Summary</div>
+  <h2 class="section-title">The Insight in Three Lines</h2>
   <div class="exec-box">
-    <p>فريق تطوير المشاريع العقارية يعاني من مشكلة واحدة تظهر بأشكال مختلفة في كل مشروع: <span class="highlight">القرارات تُتخذ على أجزاء منفصلة من المشروع، لا على المشروع ككل.</span> الزوننج في أداة، المالية في Excel، الجدوى عند مستشار، واللجنة تجتمع على وثائق لا تتحدث مع بعضها.</p>
+    <p>Real estate development teams face one problem that appears in different forms across every project: <span class="highlight">decisions are made on disconnected parts of the project, not on the project as a whole.</span> Zoning sits in one tool, finance in Excel, feasibility with a consultant, and the committee reviews documents that do not speak to each other.</p>
     <br>
-    <p>هذه المشكلة تبلغ ذروتها في مشاريع <span class="highlight">Mixed-Use والتجاري</span> — حيث تتشابك المتغيرات وتتكاثر الأطراف. وهي تقريباً غير محلولة في السوق حالياً.</p>
+    <p>This problem peaks in <span class="highlight">Mixed-Use and Commercial</span> projects — where variables interact and stakeholders multiply. It is still largely unsolved in the market today.</p>
     <br>
-    <p>UnlockLand تملك المنتج الأقرب إلى الحل. السؤال ليس ماذا تبني — بل <span class="highlight">من تستهدف أولاً وبأي رسالة.</span></p>
+    <p>UnlockLand has the product closest to solving it. The question is not what to build — but <span class="highlight">who to target first and with what message.</span></p>
   </div>
 </section>
 
 <!-- JOB MAP -->
 <section class="section" id="jobmap">
   <div class="section-tag">Job Map</div>
-  <h2 class="section-title">ثمانية لحظات يعيشها محلل الجدوى</h2>
-  <p class="section-intro">الوظيفة الجوهرية: تقييم جدوى تطوير موقع عقاري واتخاذ قرار الاستثمار في ضوء متطلبات التخطيط والعوائد المالية المستهدفة.</p>
+  <h2 class="section-title">Eight Moments a Feasibility Analyst Lives Through</h2>
+  <p class="section-intro">Core job: evaluate the feasibility of developing a real estate site and make an investment decision in light of planning requirements and target financial returns.</p>
   <div class="jobmap-container" id="jobmapRow">
     <!-- filled by JS -->
   </div>
@@ -701,64 +701,64 @@ body {
 
 <!-- NARRATIVE -->
 <section class="section" id="narrative">
-  <div class="section-tag">Layer 1 — الرواية</div>
-  <h2 class="section-title">ثمانية لحظات يفشل فيها السوق</h2>
-  <p class="section-intro">ما يعيشه محلل الجدوى في كل خطوة — بلغة تجارية، بدون مصطلحات بحثية.</p>
+  <div class="section-tag">Layer 1 — Narrative</div>
+  <h2 class="section-title">Eight Moments Where the Market Fails</h2>
+  <p class="section-intro">What the feasibility analyst experiences at each step — in commercial language, without research jargon.</p>
   <div class="narrative-grid">
     <div class="narrative-card">
-      <div class="narrative-step-badge">① Define — قبل البداية</div>
-      <h3>لحظة اختيار الهدف</h3>
-      <p>حين يُكلَّف المحلل بدراسة سوق جديد، يقف أمام سؤال لا أداة تُجيب عليه: من أين نبدأ؟ هل هذا السوق مناسب أصلاً؟</p>
-      <p>اليوم هذا القرار يُبنى على خبرة شخصية أو تقرير استشاري يستغرق أسابيع. لا يوجد framework موحد يقيّس جاذبية Asset Classes مختلفة بمنهجية واحدة.</p>
-      <div class="narrative-fwd">الفريق الذي يقيّم ثلاثة أسواق في يوم واحد يكتسب ميزة قرار لا يملكها منافسه.</div>
+      <div class="narrative-step-badge">① Define — Before the Start</div>
+      <h3>The Moment of Choosing the Target</h3>
+      <p>When an analyst is assigned to study a new market, they face a question no tool answers: Where do we start? Is this market even suitable?</p>
+      <p>Today, this decision is built on personal experience or a consulting report that takes weeks. There is no unified framework for scoring the attractiveness of different asset classes with one consistent methodology.</p>
+      <div class="narrative-fwd">The team that can evaluate three markets in one day gains a decision advantage competitors do not have.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">② Locate — جمع البيانات</div>
-      <h3>حين تتحول الأسابيع إلى عائق</h3>
-      <p>لكل موقع جديد، الفريق يجمع: بيانات الزوننج، أسعار الإيجار، تكاليف البناء، قوانين الامتثال. كل مصدر بلغة ومنطق مختلف.</p>
-      <p>في سوق غير مألوف للفريق، هذه المرحلة تستغرق 3 إلى 6 أسابيع. في هذا الوقت، الفرصة قد تُفوَّت.</p>
-      <div class="narrative-fwd">من يوفر "بيانات جاهزة للقرار" لا "بيانات خام" — يوفر وقتاً لا يعوضه المال.</div>
+      <div class="narrative-step-badge">② Locate — Data Collection</div>
+      <h3>When Weeks Become a Bottleneck</h3>
+      <p>For every new site, the team collects zoning data, rental rates, construction costs, and compliance rules. Each source uses a different language and logic.</p>
+      <p>In an unfamiliar market, this phase takes 3 to 6 weeks. During that time, the opportunity may be lost.</p>
+      <div class="narrative-fwd">Whoever provides “decision-ready data,” not “raw data,” saves time money cannot replace.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">③ Prepare — بناء الهيكل</div>
-      <h3>مشكلة الافتراضات المتضاربة</h3>
-      <p>هذه اللحظة هي الأكثر هدراً: فريق التطوير وفريق المالية لا يعملان من نفس الأرقام. هذا التعارض لا يُكتشف إلا في اجتماع اللجنة.</p>
-      <p>المطوّر يحسب على تكلفة بناء X، المحلل المالي يُدخل Y. الزوننج يسمح بكثافة معينة، النموذج المالي يفترض كثافة أعلى.</p>
-      <div class="narrative-fwd">نموذج افتراضات موحد واحد يعمل عليه الجميع — ليس ترفاً، بل ضرورة تشغيلية.</div>
+      <div class="narrative-step-badge">③ Prepare — Build the Structure</div>
+      <h3>The Conflicting Assumptions Problem</h3>
+      <p>This is the most wasteful moment: the development team and the finance team are not working from the same numbers. This conflict is often discovered only in the committee meeting.</p>
+      <p>The developer calculates based on construction cost X, while the financial analyst inputs Y. Zoning allows one density, while the financial model assumes a higher density.</p>
+      <div class="narrative-fwd">One unified assumptions model that everyone works from is not a luxury; it is an operating necessity.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">④ Confirm — التحقق</div>
-      <h3>الاكتشافات المتأخرة التي تُكلّف</h3>
-      <p>"لماذا لم نعرف هذا مبكراً؟" — هذا السؤال يُطرح في كل مشروع تقريباً. اكتشاف التعارضات في مرحلة متأخرة يُعيد ضبط ساعة المشروع من الصفر.</p>
-      <p>التحقق يعتمد على مستشارين خارجيين، وكل مستشار يتحدث بمنطق منفصل.</p>
-      <div class="narrative-fwd">التحقق الذي يحدث في ساعات لا أسابيع يُغيّر طبيعة القرار ذاته.</div>
+      <div class="narrative-step-badge">④ Confirm — Verification</div>
+      <h3>Late Discoveries That Cost</h3>
+      <p>“Why didn’t we know this earlier?” — this question appears in almost every project. Discovering conflicts late resets the project clock from zero.</p>
+      <p>Verification depends on external consultants, and each consultant speaks from a separate logic.</p>
+      <div class="narrative-fwd">Verification that happens in hours, not weeks, changes the nature of the decision itself.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">⑤ Execute — تقييم الجدوى</div>
-      <h3>لحظة الحقيقة الأكثر إهداراً</h3>
-      <p>الفريق في الغالب يبني سيناريو واحد ثم يُعدّله يدوياً. في Mixed-Use، تغيير قرار واحد يعني إعادة حساب ثلاثة نماذج في ثلاثة ملفات مختلفة.</p>
-      <p>السبب ليس الكسل — بل أن بناء سيناريو بديل يعني إعادة بناء نموذج Excel من الصفر.</p>
-      <div class="narrative-fwd">الفريق الذي يقيّم 10 سيناريوهات في وقت يقيّم فيه منافسه سيناريوين — يتخذ قرارات أفضل بشكل ممنهج.</div>
+      <div class="narrative-step-badge">⑤ Execute — Feasibility Evaluation</div>
+      <h3>The Most Wasteful Moment of Truth</h3>
+      <p>The team usually builds one scenario and then edits it manually. In Mixed-Use, one decision change means recalculating three models across three different files.</p>
+      <p>The reason is not laziness — it is that building an alternative scenario often means rebuilding the Excel model from scratch.</p>
+      <div class="narrative-fwd">The team that evaluates 10 scenarios while a competitor evaluates two makes better decisions systematically.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">⑥ Monitor — المتابعة</div>
-      <h3>المعلومة القديمة التي تُوقّع خسائر</h3>
-      <p>في أسواق كالسعودية والإمارات، تتغير أسعار البناء ومعدلات الإيجار بشكل يجعل الجدوى المحسوبة قبل ثلاثة أشهر متقادمة.</p>
-      <p>الفريق لا يعرف أن النموذج أصبح قديماً — حتى تُؤكد الصفقة على أرقام لا تعكس الواقع.</p>
-      <div class="narrative-fwd">نظام يُنبّه عند تغيّر متغير حيوي يحوّل المخاطرة من "غير مرئية" إلى "قابلة للإدارة."</div>
+      <div class="narrative-step-badge">⑥ Monitor — Monitoring</div>
+      <h3>Old Information That Creates Losses</h3>
+      <p>In markets such as Saudi Arabia and the UAE, construction costs and rental rates change in ways that can make a feasibility model from three months ago outdated.</p>
+      <p>The team may not know the model is outdated until the deal is confirmed on numbers that no longer reflect reality.</p>
+      <div class="narrative-fwd">A system that alerts the team when a critical variable changes turns risk from “invisible” into “manageable.”</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">⑦ Modify — التعديل</div>
-      <h3>Version Control الغائب</h3>
-      <p>حين يتغير افتراض رئيسي، يبدأ الفريق في بناء نسخة جديدة من النموذج. النسخة القديمة لا تُحذف، لكنها تضيع. بعد أسبوعين، لا أحد يتذكر "أي Excel هو الصحيح."</p>
-      <div class="narrative-fwd">نظام يحفظ كل نسخة، يُظهر من غيّر ماذا ومتى، ويُمكّن العودة للسابق بنقرة.</div>
+      <div class="narrative-step-badge">⑦ Modify — Modification</div>
+      <h3>The Missing Version Control</h3>
+      <p>When a major assumption changes, the team starts building a new version of the model. The old version is not deleted, but it gets lost. Two weeks later, no one remembers “which Excel is the correct one.”</p>
+      <div class="narrative-fwd">A system that saves every version, shows who changed what and when, and allows rollback with one click.</div>
     </div>
     <div class="narrative-card">
-      <div class="narrative-step-badge">⑧ Conclude — إغلاق القرار</div>
-      <h3>اللحظة التي تحسم الصفقة أو تُفسدها</h3>
-      <p>لجنة الاستثمار لا تقرأ نماذج Excel. إذا لم تكن المذكرة واضحة مع audit trail كامل — السؤال الأول هو: "من أين جاء هذا الرقم؟"</p>
-      <p>بناء IC Memo يدوياً يستغرق يوماً إلى ثلاثة أيام. وأي خطأ في نقل الأرقام يُفقد المصداقية.</p>
-      <div class="narrative-fwd">IC Memo مولّدة مباشرة من النموذج تُحوّل اجتماع اللجنة من استجواب إلى قرار.</div>
+      <div class="narrative-step-badge">⑧ Conclude — Decision Closure</div>
+      <h3>The Moment That Wins or Breaks the Deal</h3>
+      <p>Investment committees do not read Excel models. If the memo is not clear and backed by a full audit trail, the first question becomes: “Where did this number come from?”</p>
+      <p>Building an IC Memo manually takes one to three days. Any error in transferring numbers damages credibility.</p>
+      <div class="narrative-fwd">An IC Memo generated directly from the model turns the committee meeting from an interrogation into a decision.</div>
     </div>
   </div>
 </section>
@@ -766,8 +766,8 @@ body {
 <!-- LANDSCAPE -->
 <section class="section" id="landscape">
   <div class="section-tag">Layer 2 — Opportunity Landscape</div>
-  <h2 class="section-title">أين تكمن الفرصة عبر Asset Classes؟</h2>
-  <p class="section-intro">كل فقاعة = Asset Class. المحور الأفقي = الأهمية، المحور الرأسي = الرضا الحالي. الفقاعات في الزاوية العليا اليسرى = الأكثر underserved.</p>
+  <h2 class="section-title">Where Is the Opportunity Across Asset Classes?</h2>
+  <p class="section-intro">Each bubble represents an asset class. The horizontal axis shows importance; the vertical axis shows current satisfaction. Bubbles in the upper-left zone are the most underserved.</p>
   <div class="chart-wrap">
     <div class="chart-legend">
       <div class="legend-item"><div class="legend-dot" style="background:#D85A30"></div>CRITICAL — Score ≥ 14</div>
@@ -782,40 +782,40 @@ body {
 
 <!-- OPPORTUNITY MAP -->
 <section class="section" id="oppmap">
-  <div class="section-tag">Layer 2 — خريطة الأولويات</div>
-  <h2 class="section-title">أين تستثمر أولاً؟</h2>
+  <div class="section-tag">Layer 2 — Priority Map</div>
+  <h2 class="section-title">Where Should You Invest First?</h2>
   <div class="opp-map">
 
     <div class="opp-tier">
       <div class="opp-tier-header">
         <div class="tier-icon c">🔴</div>
-        <div class="tier-label c">CRITICAL — ابدأ هنا</div>
+        <div class="tier-label c">CRITICAL — Start Here</div>
       </div>
       <div class="opp-item c">
         <div class="opp-num">01</div>
         <div class="opp-content">
-          <div class="opp-title">توليد سيناريوهات تطوير متعددة في Mixed-Use بافتراض موحد</div>
-          <div class="opp-meta">Execute · Score 16 · [B] · الفجوة الأكبر</div>
-          <div class="opp-desc">السوق يفشل: أدوات منفصلة، إعادة حساب يدوية، قرار على سيناريو واحد. لا يوجد منافس يحل هذا بشكل متكامل.</div>
-          <div class="opp-fwd">ما ينتظره السوق: توليد سيناريوهات متعددة تلقائياً عند إدخال الموقع — مع هياكل مالية مُعدّة مسبقاً لكل Asset Class.</div>
+          <div class="opp-title">Generating multiple Mixed-Use development scenarios from one unified assumption set</div>
+          <div class="opp-meta">Execute · Score 16 · [B] · Largest Gap</div>
+          <div class="opp-desc">The market fails here: separate tools, manual recalculation, and decisions based on a single scenario. No competitor solves this in an integrated way.</div>
+          <div class="opp-fwd">What the market is waiting for: automatic generation of multiple scenarios when a site is entered — with prebuilt financial structures for each asset class.</div>
         </div>
       </div>
       <div class="opp-item c">
         <div class="opp-num">02</div>
         <div class="opp-content">
-          <div class="opp-title">IC Memo مولّدة مباشرة من النموذج مع audit trail كامل</div>
-          <div class="opp-meta">Conclude · Score 16 · [B] · يستهدف PDM مباشرة</div>
-          <div class="opp-desc">بناء يدوي يستغرق أياماً، أخطاء نقل، لجان تستجوب لا تقرر. هذه الفرصة تستهدف Job Executor وPDM معاً.</div>
-          <div class="opp-fwd">ما ينتظره السوق: توليد IC Memo كاملة بنقرة واحدة — كل افتراض مرتبط بمصدره وتاريخ تعديله.</div>
+          <div class="opp-title">IC Memo generated directly from the model with a complete audit trail</div>
+          <div class="opp-meta">Conclude · Score 16 · [B] · Directly targets the PDM</div>
+          <div class="opp-desc">Manual preparation takes days, transfer errors occur, and committees interrogate instead of decide. This opportunity targets both the job executor and the PDM.</div>
+          <div class="opp-fwd">What the market is waiting for: a full IC Memo generated in one click — every assumption linked to its source and change date.</div>
         </div>
       </div>
       <div class="opp-item c">
         <div class="opp-num">03</div>
         <div class="opp-content">
-          <div class="opp-title">نموذج افتراضات واحد مشترك يُحدَّث في الوقت الفعلي</div>
-          <div class="opp-meta">Prepare · Score 16 · [A] · دليل مباشر</div>
-          <div class="opp-desc">فريقان يعملان على أرقام مختلفة، الاكتشاف متأخر، التصحيح مكلف. هذا الـ gap موثق بشكل مباشر في testimonials عملاء UnlockLand.</div>
-          <div class="opp-fwd">ما ينتظره السوق: shared assumption engine يُغذّي تلقائياً جميع نماذج التقييم في آنٍ واحد.</div>
+          <div class="opp-title">One shared assumptions model updated in real time</div>
+          <div class="opp-meta">Prepare · Score 16 · [A] · Direct Evidence</div>
+          <div class="opp-desc">Two teams work on different numbers, discovery comes late, and correction is expensive. This gap is directly reflected in UnlockLand customer testimonials.</div>
+          <div class="opp-fwd">What the market is waiting for: a shared assumption engine that automatically feeds all valuation models at once.</div>
         </div>
       </div>
     </div>
@@ -823,30 +823,30 @@ body {
     <div class="opp-tier">
       <div class="opp-tier-header">
         <div class="tier-icon i">🟡</div>
-        <div class="tier-label i">IMPORTANT — الفرص التالية</div>
+        <div class="tier-label i">IMPORTANT — Next Opportunities</div>
       </div>
       <div class="opp-item i">
         <div class="opp-num">04</div>
         <div class="opp-content">
-          <div class="opp-title">تقليص وقت جمع بيانات الزوننج والتكاليف من أسابيع إلى ساعات</div>
+          <div class="opp-title">Reducing zoning and cost data collection time from weeks to hours</div>
           <div class="opp-meta">Locate · Score 14 · [A]</div>
-          <div class="opp-desc">خاصة في أسواق جديدة كالسعودية حيث البيانات غير مركزية.</div>
+          <div class="opp-desc">Especially in new markets such as Saudi Arabia, where data is not centralized.</div>
         </div>
       </div>
       <div class="opp-item i">
         <div class="opp-num">05</div>
         <div class="opp-content">
-          <div class="opp-title">التحقق الفوري من توافق السيناريو مع اشتراطات التخطيط والتمويل</div>
+          <div class="opp-title">Instant verification of scenario alignment with planning and financing requirements</div>
           <div class="opp-meta">Confirm · Score 14 · [B]</div>
-          <div class="opp-desc">اكتشاف التعارضات مبكراً يوفر أسابيع من إعادة العمل.</div>
+          <div class="opp-desc">Finding conflicts early saves weeks of rework.</div>
         </div>
       </div>
       <div class="opp-item i">
         <div class="opp-num">06</div>
         <div class="opp-content">
-          <div class="opp-title">نظام تنبيه عند تغيّر متغير حيوي مع إعادة حساب تلقائية</div>
+          <div class="opp-title">Alert system for critical variable changes with automatic recalculation</div>
           <div class="opp-meta">Monitor · Score 14 · [B]</div>
-          <div class="opp-desc">حيوي في أسواق كالسعودية والإمارات حيث تتغير البيانات بسرعة.</div>
+          <div class="opp-desc">Critical in markets such as Saudi Arabia and the UAE, where data changes quickly.</div>
         </div>
       </div>
     </div>
@@ -854,14 +854,14 @@ body {
     <div class="opp-tier">
       <div class="opp-tier-header">
         <div class="tier-icon m">🔵</div>
-        <div class="tier-label m">MONITOR — تحتاج تحقق ميداني</div>
+        <div class="tier-label m">MONITOR — Needs Field Validation</div>
       </div>
       <div class="opp-item m">
         <div class="opp-num">07</div>
         <div class="opp-content">
-          <div class="opp-title">تقييم جاذبية Asset Classes متعددة بمنهجية مقارنة موحدة</div>
-          <div class="opp-meta">Define · Score 10 · [C] · ثقة منخفضة</div>
-          <div class="opp-desc">حاجة حقيقية لكن تحتاج 5 مقابلات ميدانية قبل الاستثمار في البناء.</div>
+          <div class="opp-title">Scoring the attractiveness of multiple asset classes using one comparative methodology</div>
+          <div class="opp-meta">Define · Score 10 · [C] · Low Confidence</div>
+          <div class="opp-desc">A real need, but it requires 5 field interviews before investing in buildout.</div>
         </div>
       </div>
     </div>
@@ -871,46 +871,46 @@ body {
 
 <!-- IMPLICATIONS -->
 <section class="section" id="implications">
-  <div class="section-tag">Layer 3 — ماذا تبني، تغيّر، أو تتوقف</div>
-  <h2 class="section-title">الإجراءات المحددة</h2>
+  <div class="section-tag">Layer 3 — What to Build, Change, or Stop</div>
+  <h2 class="section-title">Specific Actions</h2>
   <table class="impl-table">
     <thead>
       <tr>
-        <th>الإجراء</th>
-        <th>القرار المحدد</th>
-        <th>الأثر</th>
+        <th>Action</th>
+        <th>Specific Decision</th>
+        <th>Impact</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="action-badge action-now">ابنِ الآن</span></td>
-        <td>Shared Assumption Engine في Mixed-Use: نموذج افتراضات واحد يُغذّي تلقائياً تقييم الزوننج + الجدوى المالية + مقارنة السيناريوهات في آنٍ واحد.</td>
-        <td>يُلغي أسابيع من التنسيق اليدوي، يحول المنتج من "أداة تحليل" إلى "غرفة قرار مشتركة."</td>
+        <td><span class="action-badge action-now">Build Now</span></td>
+        <td>Shared Assumption Engine for Mixed-Use: one assumptions model that automatically feeds zoning evaluation, financial feasibility, and scenario comparison at the same time.</td>
+        <td>Eliminates weeks of manual coordination and shifts the product from an “analysis tool” to a “shared decision room.”</td>
       </tr>
       <tr>
-        <td><span class="action-badge action-now">ابنِ الآن</span></td>
-        <td>One-click IC Memo مربوطة مباشرة بالنموذج الحي، مع audit trail يُظهر كل افتراض + من غيّره + متى.</td>
-        <td>يستهدف PDM (لجنة الاستثمار) مباشرة — يحوّل اجتماع اللجنة من استجواب إلى قرار.</td>
+        <td><span class="action-badge action-now">Build Now</span></td>
+        <td>One-click IC Memo linked directly to the live model, with an audit trail showing every assumption, who changed it, and when.</td>
+        <td>Directly targets the PDM (investment committee) — turning the committee meeting from interrogation into decision.</td>
       </tr>
       <tr>
-        <td><span class="action-badge action-next">طوِّر تالياً</span></td>
-        <td>Data layer مخصص للسوق السعودي/الخليجي: بيانات الزوننج المحلية، أسعار البناء، معدلات الإيجار، اشتراطات REGA — مدمجة داخل المنصة.</td>
-        <td>يُزيل أكبر عائق للتبني في السوق السعودي: غياب البيانات المحلية الموثوقة.</td>
+        <td><span class="action-badge action-next">Develop Next</span></td>
+        <td>Data layer tailored to the Saudi/GCC market: local zoning data, construction prices, rental rates, and REGA requirements — embedded inside the platform.</td>
+        <td>Removes the largest adoption barrier in the Saudi market: the absence of trusted local data.</td>
       </tr>
       <tr>
-        <td><span class="action-badge action-next">طوِّر تالياً</span></td>
-        <td>Assumption Alert: يرصد تغيّر 3 متغيرات حيوية (سعر الفائدة، إيجار السوق، تكلفة البناء) ويعيد الحساب تلقائياً مع إشعار الفريق.</td>
-        <td>يحوّل المخاطرة من "غير مرئية" إلى "قابلة للإدارة" — قيمة واضحة للمؤسسات الكبيرة.</td>
+        <td><span class="action-badge action-next">Develop Next</span></td>
+        <td>Assumption Alert: monitors changes in 3 critical variables (interest rate, market rent, construction cost) and automatically recalculates while notifying the team.</td>
+        <td>Turns risk from “invisible” into “manageable” — a clear value for large organizations.</td>
       </tr>
       <tr>
-        <td><span class="action-badge action-stop">أوقف الآن</span></td>
-        <td>التسويق للصناعي والبنية التحتية في هذه المرحلة.</td>
-        <td>دورة بيع طويلة، عائد غير مؤكد، تشتيت للمنتج والفريق.</td>
+        <td><span class="action-badge action-stop">Stop Now</span></td>
+        <td>Marketing to industrial and infrastructure segments at this stage.</td>
+        <td>Long sales cycle, uncertain return, and distraction for the product and team.</td>
       </tr>
       <tr>
-        <td><span class="action-badge action-test">اختبر أولاً</span></td>
-        <td>Market Scoring لمقارنة Asset Classes — قدرة جديدة تحتاج 5 مقابلات ميدانية قبل الاستثمار في البناء.</td>
-        <td>إذا تأكدت الحاجة، تصبح "entry point" جديداً للعملاء الذين لم يحسموا قرار السوق بعد.</td>
+        <td><span class="action-badge action-test">Test First</span></td>
+        <td>Market Scoring for comparing asset classes — a new capability that needs 5 field interviews before investing in buildout.</td>
+        <td>If the need is confirmed, it becomes a new entry point for customers who have not yet decided which market to enter.</td>
       </tr>
     </tbody>
   </table>
@@ -918,41 +918,41 @@ body {
 
 <!-- VALIDATION -->
 <section class="section" id="validation">
-  <div class="section-tag">Step 6 — مسار التحقق</div>
-  <h2 class="section-title">كيف تثبت أو تنفي الفرصة الأكبر؟</h2>
+  <div class="section-tag">Step 6 — Validation Path</div>
+  <h2 class="section-title">How Do You Prove or Disprove the Largest Opportunity?</h2>
   <div class="validation-box">
     <div class="validation-header">
       <div>
-        <h3>توليد سيناريوهات متعددة في Mixed-Use بافتراض موحد</h3>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">الخطوة: Execute · أعلى Opportunity Score في التحليل</div>
+        <h3>Generating Multiple Mixed-Use Scenarios from One Unified Assumption Set</h3>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Step: Execute · Highest Opportunity Score in the Analysis</div>
       </div>
       <div class="score-chip">Score 16 · [B]</div>
     </div>
     <div class="validation-body">
       <div class="assumption-box">
-        "نفترض أن محلل الجدوى في فريق تطوير Mixed-Use يعجز حالياً عن بناء نموذج قرار واحد يعكس تفاعلات المكونات المختلفة معاً. هذا الفشل يكلفه أسابيع من التنسيق اليدوي. والحلول الموجودة (Argus، Excel، Proforma منفصلة) فاشلة لأنها لا تتكلم مع بعضها."
+        “We assume that the feasibility analyst in a Mixed-Use development team currently struggles to build one decision model that reflects the interactions between different components. This failure costs weeks of manual coordination. Existing solutions (Argus, Excel, separate proformas) fail because they do not speak to each other.”
       </div>
       <div class="validation-grid">
         <div class="validation-item">
-          <div class="validation-item-label">المصادر</div>
-          <p>LinkedIn posts لمطورين Mixed-Use · Reddit (r/realestateinvesting) · G2 reviews لـ Argus وCoStar · تقارير CBRE وJLL عن تحديات التطوير المتعدد الاستخدامات</p>
+          <div class="validation-item-label">Sources</div>
+          <p>LinkedIn posts by Mixed-Use developers · Reddit (r/realestateinvesting) · G2 reviews for Argus and CoStar · CBRE and JLL reports on mixed-use development challenges</p>
         </div>
         <div class="validation-item">
-          <div class="validation-item-label">الكلمات المفتاحية</div>
+          <div class="validation-item-label">Keywords</div>
           <p>"mixed-use feasibility model" · "zoning conflict development" · "shared assumptions real estate" · "argus mixed use limitations" · "development scenario modeling problems"</p>
         </div>
         <div class="validation-item">
-          <div class="validation-item-label">علامة تثبت الافتراض ✓</div>
-          <p>مطورون يشكون من "starting over" عند تغيير مكون · workarounds واضحة (Excel منفصلة + اجتماعات تنسيق يدوية) · طلبات وظيفة تذكر "زوننج + نمذجة مالية" معاً كمهارات نادرة</p>
+          <div class="validation-item-label">Signal That Confirms the Assumption ✓</div>
+          <p>Developers complain about “starting over” when one component changes · clear workarounds (separate Excel files + manual coordination meetings) · job postings mentioning “zoning + financial modeling” together as rare combined skills</p>
         </div>
         <div class="validation-item">
-          <div class="validation-item-label">علامة تنفي الافتراض ✗</div>
-          <p>وجود أدوات SaaS ناضجة تتعامل مع Mixed-Use بشكل متكامل وبها base كبير من المستخدمين (G2 reviews &gt; 200 تقييم إيجابي على حل متكامل)</p>
+          <div class="validation-item-label">Signal That Disproves the Assumption ✗</div>
+          <p>Presence of mature SaaS tools that handle Mixed-Use in an integrated way and have a large user base (G2 reviews &gt; 200 positive reviews on an integrated solution)</p>
         </div>
       </div>
       <div class="decision-box">
-        <div class="decision-box-label">نقطة القرار</div>
-        <p>إذا وجدنا ≥ 5 workarounds موثقة + لا يوجد منافس يحوز &gt;30% رضا على هذا السيناريو تحديداً → الفرصة حقيقية وغير محتلة. إذا وجدنا منافساً ناضجاً بهذه المواصفات → أعِد توجيه الموارد نحو فرصة IC Memo (الثانية في الترتيب).</p>
+        <div class="decision-box-label">Decision Point</div>
+        <p>If we find ≥ 5 documented workarounds and no competitor with &gt;30% satisfaction on this exact scenario → the opportunity is real and unoccupied. If we find a mature competitor with these specifications → redirect resources toward the IC Memo opportunity (second priority).</p>
       </div>
     </div>
   </div>
@@ -960,44 +960,44 @@ body {
 
 <!-- NEXT STEPS -->
 <section class="section" id="nextsteps">
-  <div class="section-tag">الخطوات التالية</div>
-  <h2 class="section-title">من الرؤية إلى القرار</h2>
-  <p class="section-intro">هذه الوثيقة INSIGHT-GRADE — مبنية على بحث ثانوي وتحليل منطقي. الخطوات التالية تحوّلها من "رؤية محتملة" إلى "قرار موثق."</p>
+  <div class="section-tag">Next Steps</div>
+  <h2 class="section-title">From Insight to Decision</h2>
+  <p class="section-intro">This document is INSIGHT-GRADE — built on secondary research and logical analysis. The next steps turn it from a “potential insight” into a “documented decision.”</p>
 
   <div class="unknown-list">
-    <div style="font-size:13px;font-weight:600;margin-bottom:.5rem;color:var(--text-muted);">ما لا نعرفه بعد — يجب تأكيده في المقابلات:</div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:.5rem;color:var(--text-muted);">What we do not know yet — must be confirmed in interviews:</div>
     <div class="unknown-item">
       <div class="unknown-icon">◇</div>
-      هل "توليد السيناريوهات" مشكلة المحلل أم مشكلة صاحب القرار؟ الجواب يُغيّر قرار التسعير والرسالة التسويقية.
+      Is “scenario generation” the analyst’s problem or the decision maker’s problem? The answer changes pricing and messaging decisions.
     </div>
     <div class="unknown-item">
       <div class="unknown-icon">◇</div>
-      ما نسبة الوقت الفعلي التي يقضيها المحلل في التنسيق اليدوي بين الأدوات؟
+      What percentage of actual time does the analyst spend manually coordinating between tools?
     </div>
     <div class="unknown-item">
       <div class="unknown-icon">◇</div>
-      هل IC Memo الضعيفة سبب رفض صفقات — أم مجرد إزعاج تشغيلي؟
+      Is a weak IC Memo a reason deals are rejected — or merely an operational annoyance?
     </div>
   </div>
 
   <div class="next-grid">
     <div class="next-card">
       <div class="next-num">01</div>
-      <h4>مقابلات التحقق</h4>
-      <p>5 مقابلات مع محللي جدوى في شركات تطوير مؤسسية نفّذوا مشاريع Mixed-Use في آخر 18 شهراً — في السعودية أو الإمارات أو كندا.</p>
-      <div class="next-tag">1-2 أسبوع · Track A → B</div>
+      <h4>Validation Interviews</h4>
+      <p>5 interviews with feasibility analysts in institutional development companies that executed Mixed-Use projects in the last 18 months — in Saudi Arabia, the UAE, or Canada.</p>
+      <div class="next-tag">1–2 Weeks · Track A → B</div>
     </div>
     <div class="next-card">
       <div class="next-num">02</div>
-      <h4>تأكيد Beachhead</h4>
-      <p>Mixed-Use هو السوق الأول المقترح. قبل أي استثمار في product أو marketing، أكّد أن الـ Score 16 يعكس ألماً حقيقياً يدفع عليه العميل — لا مجرد عدم راحة.</p>
-      <div class="next-tag">قرار استراتيجي · أسبوع 3</div>
+      <h4>Confirm the Beachhead</h4>
+      <p>Mixed-Use is the proposed first market. Before any investment in product or marketing, confirm that Score 16 reflects a real pain customers will pay for — not just discomfort.</p>
+      <div class="next-tag">Strategic Decision · Week 3</div>
     </div>
     <div class="next-card">
       <div class="next-num">03</div>
-      <h4>رسالة تسويقية مختبرة</h4>
-      <p>بعد تأكيد الـ beachhead، ابنِ رسالة تسويقية تتحدث بلغة "توليد سيناريوهات في دقائق" و"IC Memo بنقرة" — لا "منصة ذكاء اصطناعي."</p>
-      <div class="next-tag">Go-to-Market · أسبوع 4-6</div>
+      <h4>Tested Marketing Message</h4>
+      <p>After confirming the beachhead, build messaging in the language of “scenario generation in minutes” and “one-click IC Memo” — not “AI platform.”</p>
+      <div class="next-tag">Go-to-Market · Weeks 4–6</div>
     </div>
   </div>
 </section>
@@ -1005,9 +1005,9 @@ body {
 <!-- FOOTER -->
 <footer class="report-footer">
   <div style="display:flex;align-items:center;gap:14px;">
-    <div class="footer-brand">وثيقة رؤية استراتيجية · <strong>UnlockLand</strong> · The Lens</div>
+    <div class="footer-brand">Strategic Insight Document · <strong>UnlockLand</strong> · The Lens</div>
   </div>
-  <div class="footer-grade">INSIGHT-GRADE · ODI-Light Track A · علي الغامدي · مايو 2026<br>هذه الوثيقة مبنية على بحث ثانوي وتحليل منطقي. المقابلات الميدانية ستحسم الفرص بدرجة ثقة أعلى.</div>
+  <div class="footer-grade">INSIGHT-GRADE · ODI-Light Track A · Ali Alghamdi · May 2026<br>This document is based on secondary research and logical analysis. Field interviews will determine the opportunities with higher confidence.</div>
 </footer>
 
 </main>
@@ -1036,15 +1036,15 @@ function submitContact() {
   const phone = document.getElementById('fPhone').value.trim();
   const email = document.getElementById('fEmail').value.trim();
   if (!name || !phone || !email) {
-    alert('يرجى تعبئة جميع الحقول');
+    alert('Please complete all required fields');
     return;
   }
   // Send via mailto
-  const subject = encodeURIComponent('طلب تواصل من تقرير UnlockLand — The Lens');
+  const subject = encodeURIComponent('Contact request from UnlockLand Report — The Lens');
   const body = encodeURIComponent(
-    'الاسم: ' + name + '\n' +
-    'الجوال: ' + phone + '\n' +
-    'الإيميل: ' + email
+    'Name: ' + name + '\n' +
+    'Mobile: ' + phone + '\n' +
+    'Email: ' + email
   );
   window.location.href = 'mailto:alghamdiaag@gmail.com?subject=' + subject + '&body=' + body;
   document.getElementById('contactForm').style.display = 'none';
@@ -1067,64 +1067,64 @@ function navTo(id, btn) {
 
 // ── JOB MAP DATA ──
 const steps = [
-  { num:'1', ar:'حدّد', en:'Define', jtbd:'تحديد معايير النجاح للأصل المستهدف قبل التقييم' },
-  { num:'2', ar:'اجمع', en:'Locate', jtbd:'تجميع بيانات الموقع والسوق والتنظيم من مصادر متعددة' },
-  { num:'3', ar:'هيّئ', en:'Prepare', jtbd:'تنظيم الافتراضات المشتركة وبناء هيكل التحليل' },
-  { num:'4', ar:'تحقّق', en:'Confirm', jtbd:'التحقق من التوافق مع متطلبات التخطيط والتمويل' },
-  { num:'5', ar:'نفّذ', en:'Execute', jtbd:'تقييم الجدوى المالية واختيار السيناريو الأمثل' },
-  { num:'6', ar:'راقب', en:'Monitor', jtbd:'متابعة تغيّر الافتراضات أثناء مرحلة التقييم' },
-  { num:'7', ar:'عدّل', en:'Modify', jtbd:'تعديل السيناريوهات عند تغيّر متغير جوهري' },
-  { num:'8', ar:'أغلق', en:'Conclude', jtbd:'توثيق القرار وإعداده للجنة الاستثمار' },
+  { num:'1', ar:'Define', en:'Define', jtbd:'Define success criteria for the target asset before evaluation' },
+  { num:'2', ar:'Locate', en:'Locate', jtbd:'Collect site, market, and regulatory data from multiple sources' },
+  { num:'3', ar:'Prepare', en:'Prepare', jtbd:'Organize shared assumptions and build the analysis structure' },
+  { num:'4', ar:'Confirm', en:'Confirm', jtbd:'Verify alignment with planning and financing requirements' },
+  { num:'5', ar:'Execute', en:'Execute', jtbd:'Evaluate financial feasibility and select the optimal scenario' },
+  { num:'6', ar:'Monitor', en:'Monitor', jtbd:'Monitor changes in assumptions during the evaluation phase' },
+  { num:'7', ar:'Modify', en:'Modify', jtbd:'Modify scenarios when a material variable changes' },
+  { num:'8', ar:'Conclude', en:'Conclude', jtbd:'Document the decision and prepare it for the investment committee' },
 ];
 
 const outcomes = {
   0:[
-    {t:'تقليل الوقت اللازم لتحديد Asset Class المناسب لموقع محدد استناداً إلى بيانات الطلب والعوائد',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية تحديد معايير نجاح تتعارض مع سياسة التخطيط المحلية في مرحلة مبكرة',i:9,s:2,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لمقارنة جاذبية أسواق متعددة بمنهجية موحدة',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية استبعاد Asset Class واعد لعدم توافر بيانات كافية عنه',i:7,s:4,ev:'[C]'},
+    {t:'Minimize the time required to determine the suitable asset class for a specific site based on demand and return data',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood of defining success criteria that conflict with local planning policy early in the process',i:9,s:2,ev:'[B]'},
+    {t:'Minimize the time required to compare the attractiveness of multiple markets using a unified methodology',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood of excluding a promising asset class due to insufficient available data',i:7,s:4,ev:'[C]'},
   ],
   1:[
-    {t:'تقليل الوقت اللازم لجمع بيانات الزوننج واشتراطات التخطيط من مصادر متعددة لموقع واحد',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية أن تكون بيانات التكلفة الإنشائية المستخدمة غير محدّثة لفئة الأصل المستهدفة',i:8,s:3,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لتجميع بيانات مقارنة السوق لفئة أصل لم يتعامل معها الفريق من قبل',i:8,s:2,ev:'[B]'},
-    {t:'تقليل احتمالية فقدان وثيقة أو بيانات حيوية بسبب تشتتها في أدوات منفصلة',i:7,s:4,ev:'[A]'},
+    {t:'Minimize the time required to collect zoning data and planning requirements from multiple sources for one site',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood that the construction cost data used is outdated for the target asset class',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the time required to compile market comparison data for an asset class the team has not handled before',i:8,s:2,ev:'[B]'},
+    {t:'Minimize the likelihood of losing a critical document or data point because it is scattered across separate tools',i:7,s:4,ev:'[A]'},
   ],
   2:[
-    {t:'تقليل الوقت اللازم لبناء هيكل افتراضات موحد يمكن لجميع أعضاء الفريق العمل منه',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية أن يعمل المطوّر والمحلل المالي على افتراضات مختلفة في وقت واحد',i:9,s:2,ev:'[A]'},
-    {t:'تقليل الوقت اللازم لتهيئة نموذج جدوى لـ Asset Class جديد لم يُعدّ له قالب مسبقاً',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية أن تُبنى سيناريوهات التطوير على افتراضات لم تُختبر بعد',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the time required to build a unified assumptions structure that all team members can work from',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood that the developer and financial analyst work from different assumptions at the same time',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the time required to prepare a feasibility model for a new asset class without a prebuilt template',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood that development scenarios are built on assumptions that have not yet been tested',i:8,s:3,ev:'[B]'},
   ],
   3:[
-    {t:'تقليل الوقت اللازم للتحقق من أن نسب الاستخدام المقترحة تتوافق مع اشتراطات التخطيط',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية اكتشاف تعارض بين النموذج المالي ومتطلبات جهة التمويل في مرحلة متأخرة',i:9,s:2,ev:'[B]'},
-    {t:'تقليل الوقت اللازم للحصول على تأكيد من متخصص تخطيط حول صحة سيناريو مقترح',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية تقديم جدوى غير مكتملة أمام لجنة الاستثمار بسبب ثغرة في مرحلة التحقق',i:8,s:4,ev:'[B]'},
+    {t:'Minimize the time required to verify that proposed use ratios align with planning requirements',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood of discovering a conflict between the financial model and lender requirements at a late stage',i:9,s:2,ev:'[B]'},
+    {t:'Minimize the time required to obtain confirmation from a planning specialist on the validity of a proposed scenario',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood of presenting incomplete feasibility to the investment committee due to a gap in verification',i:8,s:4,ev:'[B]'},
   ],
   4:[
-    {t:'تقليل الوقت اللازم لتوليد سيناريوهات تطوير متعددة قابلة للمقارنة لنفس الموقع',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية أن يُبنى قرار الاستثمار على سيناريو واحد دون اختبار بدائل',i:9,s:3,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لحساب IRR وعوائد رأس المال لكل سيناريو بعد تغيير افتراض رئيسي',i:8,s:3,ev:'[A]'},
-    {t:'تقليل احتمالية أن تؤثر أخطاء Excel على صحة النموذج المالي المُقدَّم',i:8,s:4,ev:'[A]'},
+    {t:'Minimize the time required to generate multiple comparable development scenarios for the same site',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood that the investment decision is based on one scenario without testing alternatives',i:9,s:3,ev:'[B]'},
+    {t:'Minimize the time required to calculate IRR and capital returns for each scenario after a key assumption changes',i:8,s:3,ev:'[A]'},
+    {t:'Minimize the likelihood that Excel errors affect the validity of the submitted financial model',i:8,s:4,ev:'[A]'},
   ],
   5:[
-    {t:'تقليل الوقت اللازم لرصد تغيرات أسعار البناء أو الإيجارات وإدراجها في النموذج',i:8,s:2,ev:'[B]'},
-    {t:'تقليل احتمالية أن تُتخذ قرارات بناءً على بيانات سوق قديمة دون تنبيه',i:9,s:2,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لمعرفة أثر تغيير سعر الفائدة أو معدل الإشغال على الجدوى',i:8,s:3,ev:'[A]'},
-    {t:'تقليل احتمالية اكتشاف تغيير جوهري في متغير السوق بعد إغلاق الصفقة',i:7,s:4,ev:'[C]'},
+    {t:'Minimize the time required to detect changes in construction costs or rents and incorporate them into the model',i:8,s:2,ev:'[B]'},
+    {t:'Minimize the likelihood that decisions are made on outdated market data without an alert',i:9,s:2,ev:'[B]'},
+    {t:'Minimize the time required to understand the impact of a change in interest rate or occupancy rate on feasibility',i:8,s:3,ev:'[A]'},
+    {t:'Minimize the likelihood of discovering a material market variable change after the deal is closed',i:7,s:4,ev:'[C]'},
   ],
   6:[
-    {t:'تقليل الوقت اللازم لإعادة حساب جميع السيناريوهات بعد تغيير افتراض رئيسي واحد',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية فقدان نسخة الافتراضات الأصلية عند مقارنة السيناريوهات المحدّثة بالسابقة',i:8,s:3,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لإبلاغ أعضاء الفريق بالتغييرات في الافتراضات وأثرها على النتائج',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية استمرار فريق في العمل على سيناريو تم التخلي عنه',i:7,s:5,ev:'[C]'},
+    {t:'Minimize the time required to recalculate all scenarios after one key assumption changes',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood of losing the original assumptions version when comparing updated scenarios to prior ones',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the time required to inform team members of assumption changes and their impact on results',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood that a team continues working on a scenario that has been abandoned',i:7,s:5,ev:'[C]'},
   ],
   7:[
-    {t:'تقليل الوقت اللازم لإعداد مذكرة IC كاملة بعد اتخاذ قرار المضي في المشروع',i:9,s:2,ev:'[A]'},
-    {t:'تقليل احتمالية أن تحتوي مذكرة IC على افتراضات لا تتطابق مع النموذج المالي النهائي',i:9,s:2,ev:'[B]'},
-    {t:'تقليل الوقت اللازم لإنتاج مواد عرض مرئية جاهزة للجنة الاستثمار',i:8,s:3,ev:'[B]'},
-    {t:'تقليل احتمالية رفض طلب التمويل بسبب عدم وضوح مسار القرار أو غياب Audit Trail',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the time required to prepare a complete IC memo after deciding to proceed with the project',i:9,s:2,ev:'[A]'},
+    {t:'Minimize the likelihood that the IC memo contains assumptions that do not match the final financial model',i:9,s:2,ev:'[B]'},
+    {t:'Minimize the time required to produce presentation-ready materials for the investment committee',i:8,s:3,ev:'[B]'},
+    {t:'Minimize the likelihood that a financing request is rejected due to an unclear decision path or missing audit trail',i:8,s:3,ev:'[B]'},
   ],
 };
 
@@ -1168,7 +1168,7 @@ function selectStep(idx){
     </div>
     <div class="outcomes-col-header">
       <span>Outcome Statement</span>
-      <span>أهمية</span><span>رضا</span><span>Score</span><span>دليل</span>
+      <span>Importance</span><span>Satisfaction</span><span>Score</span><span>Evidence</span>
     </div>
     ${rows}
   `;
@@ -1199,10 +1199,10 @@ new Chart(document.getElementById('landscapeChart'),{
     responsive:true,maintainAspectRatio:false,
     layout:{padding:{top:24,right:16,bottom:8,left:8}},
     scales:{
-      x:{title:{display:true,text:'الأهمية (Importance)',font:{size:11}},min:5.5,max:10,grid:{color:'rgba(10,1,64,0.06)'},ticks:{font:{size:10}}},
-      y:{title:{display:true,text:'الرضا (Satisfaction)',font:{size:11}},min:1,max:7,grid:{color:'rgba(10,1,64,0.06)'},ticks:{font:{size:10}}}
+      x:{title:{display:true,text:'Importance',font:{size:11}},min:5.5,max:10,grid:{color:'rgba(10,1,64,0.06)'},ticks:{font:{size:10}}},
+      y:{title:{display:true,text:'Satisfaction',font:{size:11}},min:1,max:7,grid:{color:'rgba(10,1,64,0.06)'},ticks:{font:{size:10}}}
     },
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const d=ctx.raw;return[d.label,`أهمية: ${d.x} | رضا: ${d.y} | Score: ${d.score}`];}}}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const d=ctx.raw;return[d.label,`Importance: ${d.x} | Satisfaction: ${d.y} | Score: ${d.score}`];}}}},
     animation:false
   },
   plugins:[{afterDraw(chart){
