@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>moatly™ — خريطة فرصة السوق · The Lens</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --navy: #0A0140;
+    --navy-light: #140280;
+    --cyan: #4DDDDF;
+    --cyan-bg: rgba(77,221,223,0.10);
+    --coral-border: #D85A30;
+    --coral-bg: #FAECE7;
+    --coral-text: #993C1D;
+    --amber-border: #BA7517;
+    --amber-bg: #FAEEDA;
+    --amber-text: #854F0B;
+    --teal-text: #0F6E56;
+    --text-primary: #0A0140;
+    --text-secondary: #3D3A6B;
+    --text-muted: #7C78A8;
+    --border: rgba(10,1,64,0.12);
+    --border-strong: rgba(10,1,64,0.25);
+    --bg-page: #F7F7FC;
+    --bg-white: #FFFFFF;
+    --bg-section: #F0F0F8;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,1,64,0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid rgba(77,221,223,0.2);
+    overflow-x: auto;
+  }
+  .nav-brand {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 14px 0;
+    margin-left: 24px;
+  }
+  .nav a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 14px 14px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav a:hover, .nav a.active {
+    color: #fff;
+    border-bottom-color: var(--cyan);
+  }
+
+  /* DOC WRAPPER */
+  .doc {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* PAGE SEPARATOR */
+  .page {
+    padding: 3.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .page:last-child { border-bottom: none; }
+
+  /* SECTION LABEL */
+  .sec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* === PAGE 1 — COVER === */
+  .page-cover {
+    background: var(--navy);
+    color: white;
+    padding: 4rem 3.5rem;
+    border-radius: var(--radius);
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,221,223,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,221,223,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .badge-cyan { background: var(--cyan); color: var(--navy); }
+  .badge-outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+  .badge-coral { background: var(--coral-bg); color: var(--coral-text); }
+  .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
+  .badge-teal { background: rgba(15,110,86,0.15); color: #4DDDDF; }
+
+  .cover-title {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  .cover-title span { color: var(--cyan); }
+  .cover-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    padding-top: 2rem;
+    border-top: 0.5px solid rgba(255,255,255,0.15);
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+  .cover-meta-val {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* === PAGE 2 — EXEC SUMMARY === */
+  .dd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .dd-card {
+    background: var(--bg-white);
+    padding: 1.5rem;
+  }
+  .dd-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--cyan);
+    background: var(--navy);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .dd-q { font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 8px; }
+  .dd-a { font-size: 13px; color: var(--text-primary); line-height: 1.7; }
+  .dd-a strong { color: var(--navy); font-weight: 500; }
+
+  .closing-line {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 16px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-section);
+    font-style: italic;
+  }
+
+  /* === PAGE 3 — EXECUTOR === */
+  .executor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .exec-card {
+    padding: 16px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-white);
+  }
+  .exec-card.primary { border-color: var(--navy); border-width: 1px; }
+  .exec-role {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .exec-name { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+  .exec-note { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  .info-box {
+    background: var(--bg-section);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 1rem;
+  }
+  .info-box-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .info-box-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.75;
+  }
+
+  /* === PAGE 4 — JOB MAP === */
+  .jobmap-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .jobmap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: 700px;
+  }
+  .jm-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .jm-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 82px;
+    height: 36px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 14px;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+  }
+  .jm-pill.studied {
+    border: 1.5px solid var(--cyan);
+    background: var(--cyan-bg);
+    color: var(--navy);
+  }
+  .jm-pill.unstudied {
+    border: 0.5px solid var(--border-strong);
+    background: var(--bg-section);
+    color: var(--text-muted);
+  }
+  .jm-badge {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+    display: block;
+    font-weight: 500;
+  }
+  .jm-badge.s { color: var(--cyan); }
+  .jm-badge.u { color: var(--text-muted); }
+  .jm-arrow {
+    width: 20px;
+    height: 2px;
+    background: var(--border-strong);
+    position: relative;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: -16px;
+  }
+  .jm-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0; top: -3px;
+    border: 4px solid transparent;
+    border-right: none;
+    border-left-color: var(--border-strong);
+  }
+
+  /* === PAGE 5 — FINDINGS === */
+  .step-block {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: var(--bg-white);
+  }
+  .step-header {
+    padding: 16px 20px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-section);
+  }
+  .step-tag {
+    background: var(--navy);
+    color: var(--cyan);
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .step-headline {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+  .step-body { padding: 20px; }
+  .step-story {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .step-story strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .gap {
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .gap-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .gap-crit { border: 0.5px solid var(--coral-border); }
+  .gap-crit .gap-header { background: var(--coral-bg); }
+  .gap-imp { border: 0.5px solid var(--amber-border); }
+  .gap-imp .gap-header { background: var(--amber-bg); }
+  .gap-label {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .gap-crit .gap-label { background: var(--coral-border); color: #fff; }
+  .gap-imp .gap-label { background: var(--amber-border); color: #fff; }
+  .gap-statement {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+    line-height: 1.5;
+  }
+  .gap-chevron {
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .gap.open .gap-chevron { transform: rotate(180deg); }
+  .gap-details {
+    display: none;
+    padding: 16px;
+    border-top: 0.5px solid var(--border);
+    background: #fff;
+  }
+  .gap.open .gap-details { display: block; }
+  .gap-row { margin-bottom: 12px; }
+  .gap-row:last-child { margin-bottom: 0; }
+  .gap-row-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .gap-row-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .gap-waiting {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal-text);
+    line-height: 1.6;
+  }
+  .gap-evidence {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  /* === PAGE 6 — LANDSCAPE === */
+  .landscape-wrap {
+    background: var(--bg-white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 1.5rem;
+  }
+  #landscape-svg { width: 100%; height: auto; }
+  .landscape-disclaimer {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-section);
+    border-right: 3px solid var(--amber-border);
+    line-height: 1.6;
+  }
+  .landscape-insight {
+    background: var(--bg-section);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .landscape-insight p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .landscape-insight p:last-child { margin-bottom: 0; }
+  .landscape-insight strong { color: var(--text-primary); font-weight: 500; }
+
+  /* === PAGE 7 — OPPORTUNITY SIZE === */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .calc-block {
+    background: var(--bg-white);
+    padding: 20px;
+  }
+  .calc-icon { font-size: 20px; margin-bottom: 10px; color: var(--navy); }
+  .calc-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .calc-number { font-size: 22px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .calc-note { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  .synthesis-box {
+    background: var(--navy);
+    color: white;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 1.5rem;
+  }
+  .synthesis-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .synthesis-text { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.9); }
+  .synthesis-text strong { color: var(--cyan); font-weight: 500; }
+
+  /* === PAGE 8 — VERDICT === */
+  .strategy-box {
+    border: 0.5px solid var(--navy);
+    border-right: 4px solid var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 2rem;
+    background: var(--bg-white);
+  }
+  .strategy-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .strategy-text { font-size: 14px; color: var(--text-primary); line-height: 1.75; }
+
+  .what-box { margin-bottom: 2rem; }
+  .what-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .what-col { background: var(--bg-section); border-radius: var(--radius); padding: 16px 20px; }
+  .what-col-title { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.06em; }
+  .what-list { list-style: none; }
+  .what-list li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 5px 0;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .what-list li:last-child { border-bottom: none; }
+  .what-list li::before { content: '—'; color: var(--text-muted); flex-shrink: 0; }
+
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 2rem; }
+  .tier {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-white);
+  }
+  .tier.active { border-color: var(--navy); }
+  .tier-head {
+    padding: 12px 16px;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--bg-section);
+  }
+  .tier.active .tier-head { background: var(--navy); }
+  .tier-num {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .tier.active .tier-num { color: var(--cyan); }
+  .tier-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .tier.active .tier-name { color: #fff; }
+  .tier-body { padding: 14px 16px; }
+  .tier-q { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-style: italic; }
+  .tier-items { list-style: none; }
+  .tier-items li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 3px 0;
+    display: flex;
+    gap: 6px;
+  }
+  .tier-items li::before { content: '·'; color: var(--cyan); flex-shrink: 0; font-size: 14px; line-height: 1.4; }
+
+  .closing-block {
+    background: var(--navy);
+    color: white;
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .closing-block-text { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.9); flex: 1; }
+  .closing-block-text strong { color: var(--cyan); font-weight: 500; }
+  .closing-cta {
+    background: var(--cyan);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* === PAGE 9 — METHODOLOGY === */
+  .verdict-box {
+    background: var(--bg-section);
+    border-right: 3px solid var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 2rem;
+  }
+  .verdict-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .verdict-text { font-size: 14px; color: var(--text-primary); line-height: 1.75; }
+
+  .method-text { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+
+  .source-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+  .source-block { background: var(--bg-white); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .source-title { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.06em; }
+  .source-list { list-style: none; }
+  .source-list li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .source-list li:last-child { border-bottom: none; }
+  .src-type {
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  .path-map { background: var(--bg-section); border-radius: var(--radius); padding: 20px 24px; }
+  .path-row { display: flex; align-items: flex-start; gap: 16px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .path-row:last-child { border-bottom: none; }
+  .path-level {
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--navy);
+    color: var(--cyan);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .path-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .path-text strong { color: var(--text-primary); font-weight: 500; }
+
+  .footnote {
+    margin-top: 1.5rem;
+    padding: 12px 16px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer-bar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    padding: 16px 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4rem;
+  }
+  .footer-bar span { color: var(--cyan); }
+
+  /* RESPONSIVE */
+  @media (max-width: 620px) {
+    .doc { padding: 0 1rem 4rem; }
+    .page { padding: 2rem 0; }
+    .page-cover { padding: 2.5rem 1.5rem; }
+    .dd-grid, .executor-row, .calc-grid, .tiers, .what-cols, .source-grid { grid-template-columns: 1fr; }
+    .jobmap { min-width: 600px; }
+    .closing-block { flex-direction: column; }
+  }
+
+  @media print {
+    .nav { display: none; }
+    .page { page-break-inside: avoid; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">The Lens</div>
+  <a href="#cover" class="active">الغلاف</a>
+  <a href="#exec">الملخص</a>
+  <a href="#executor">المستخدم</a>
+  <a href="#jobmap">خريطة العمل</a>
+  <a href="#findings">الفجوات</a>
+  <a href="#landscape">خارطة الفرص</a>
+  <a href="#size">حجم الفرصة</a>
+  <a href="#verdict">التوصية</a>
+  <a href="#methodology">المنهجية</a>
+</nav>
+
+<div class="doc">
+
+<!-- PAGE 1 — COVER -->
+<div class="page page-cover" id="cover">
+  <div class="cover-badge-row">
+    <span class="badge badge-cyan">خريطة فرصة السوق</span>
+    <span class="badge badge-outline">INSIGHT-GRADE</span>
+    <span class="badge badge-outline">بحث رقمي</span>
+  </div>
+  <h1 class="cover-title">موطلي™ — <span>من يحاول بناء حصنه التنافسي؟</span><br>وأين يفشل السوق في مساعدته؟</h1>
+  <p class="cover-sub">قراءة مستقلة في ثمانية لحظات تصنع تجربة المؤسس مع حماية شركته — من اللحظة التي لا يعرف فيها من أين يبدأ، إلى اليوم الذي يكتشف فيه أن ما بناه لم يعد محمياً.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">العميل</div>
+      <div class="cover-meta-val">moatly™</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">القارئ</div>
+      <div class="cover-meta-val">فريق المؤسسين</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">السوق المدروس</div>
+      <div class="cover-meta-val">مؤسسو شركات ناشئة تقنية</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">الخطوات المحللة</div>
+      <div class="cover-meta-val">8 من 8</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">التاريخ</div>
+      <div class="cover-meta-val">مايو 2026</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">المعد</div>
+      <div class="cover-meta-val">The Lens · علي الغامدي</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 — EXEC SUMMARY -->
+<div class="page" id="exec">
+  <div class="sec-label">الملخص التنفيذي — ثلاثة أسئلة Due Diligence</div>
+
+  <div class="dd-grid">
+    <div class="dd-card">
+      <div class="dd-num">1</div>
+      <div class="dd-q">هل السوق حقيقي؟</div>
+      <div class="dd-a">نعم. المؤسس الذي تستهدفه moatly يعاني من ألم موثق وقابل للقياس: لا يعرف ما الذي يحميه، ويخشى اكتشاف التعارض بعد فوات الأوان. <strong>هذا ألم وظيفي حقيقي</strong> — لا يحتاج إنشاء وعي، يحتاج حلاً.</div>
+    </div>
+    <div class="dd-card">
+      <div class="dd-num">2</div>
+      <div class="dd-q">هل الألم بحجم يستحق الاستثمار؟</div>
+      <div class="dd-a">ثلاث فجوات بمستوى حرج عالٍ — أبرزها: اكتشاف التعارض التجاري بعد الإطلاق وبعد صرف الميزانية. تكلفة هذا الفشل المتكرر: <strong>إعادة بناء البراند</strong> وخسارة صفقات استثمار في مرحلة Due Diligence. نافذة الفرصة غير المخدومة: بين 500 و800 مؤسس نشط سنوياً في السعودية وحدها.</div>
+    </div>
+    <div class="dd-card">
+      <div class="dd-num">3</div>
+      <div class="dd-q">هل نافذة الدخول مفتوحة الآن؟</div>
+      <div class="dd-a">نعم. نمو منظومة رأس المال المخاطر في السعودية (SVC + صناديق Vision 2030) يرفع عدد المؤسسين الذين يدخلون جولات Pre-Series A سنوياً. <strong>لا يوجد منافس مباشر</strong> يجمع الاكتشاف والمتابعة والتنبيه في منتج واحد موجه للمؤسسين.</div>
+    </div>
+  </div>
+
+  <div class="closing-line">هذا التقرير وثيقة Due Diligence مستقلة — لا توصية باستثمار.</div>
+</div>
+
+<!-- PAGE 3 — EXECUTOR -->
+<div class="page" id="executor">
+  <div class="sec-label">من درسنا وماذا يحاول أن ينجز</div>
+
+  <div class="executor-row">
+    <div class="exec-card primary">
+      <div class="exec-role">المستخدم الأساسي</div>
+      <div class="exec-name">مؤسس شركة ناشئة تقنية</div>
+      <div class="exec-note">يبني منتجاً بسرعة ويحاول تأمين ما بناه في الوقت ذاته — مع ميزانية محدودة ووقت أقل</div>
+    </div>
+    <div class="exec-card">
+      <div class="exec-role">المستخدم الثانوي</div>
+      <div class="exec-name">Co-founder تقني / CTO</div>
+      <div class="exec-note">يطور الكود والخوارزميات لكن لا يعرف كيف يحمي ما أنتجه من الناحية القانونية</div>
+    </div>
+    <div class="exec-card">
+      <div class="exec-role">صاحب قرار الشراء</div>
+      <div class="exec-name">المؤسس الرئيسي (CEO)</div>
+      <div class="exec-note">يدفع من ميزانية الشركة — يقرر الشراء لأن الألم واضح وخسارة التسجيل غير قابلة للاسترداد</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">ما يحاول إنجازه</div>
+    <div class="info-box-text">تأمين الحصن التنافسي لشركته — بحيث تتحرك الحماية القانونية بنفس سرعة البناء، ولا تتحول IP إلى عبء يلهي عن النمو.</div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">لماذا هذا العمل صعب هيكلياً</div>
+    <div class="info-box-text">المؤسس يعيش في حالة من الغموض المستمر: يبني أشياء لا يعرف هل تستحق الحماية، ويتعامل مع إجراءات قانونية معقدة تختلف من دولة لأخرى، ويواجه مواعيد لا يعرف عنها حتى يفوتها. الفارق بين سرعة البناء وسرعة الحماية — هذا هو الألم الحقيقي.</div>
+  </div>
+</div>
+
+<!-- PAGE 4 — JOB MAP -->
+<div class="page" id="jobmap">
+  <div class="sec-label">خريطة العمل — ثمانية لحظات في رحلة المؤسس</div>
+
+  <div class="jobmap-wrap">
+    <div class="jobmap">
+      <div class="jm-step">
+        <div class="jm-pill studied">ما الذي أحميه؟</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أُثبت ملكيتي</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أفهم الإجراءات</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أتحقق من التعارضات</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أُقدِّم الطلب</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أتابع التقدم</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أتعامل مع العقبات</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+      <div class="jm-arrow"></div>
+      <div class="jm-step">
+        <div class="jm-pill studied">أحافظ على ما حميته</div>
+        <span class="jm-badge s">مُحلَّل</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">نطاق التحليل</div>
+    <div class="info-box-text">جميع الخطوات الثماني مُحللة · 42 فجوة مدروسة · مصادر رقمية عامة · INSIGHT-GRADE — تحقق ميداني متاح كمستوى ثانٍ</div>
+  </div>
+</div>
+
+<!-- PAGE 5 — FINDINGS -->
+<div class="page" id="findings">
+  <div class="sec-label">أين يفشل السوق في خدمة المؤسس</div>
+
+  <!-- STEP 1 -->
+  <div class="step-block">
+    <div class="step-header">
+      <span class="step-tag">اللحظة الأولى</span>
+      <div class="step-headline">المؤسس لا يعرف ما الذي يبدأ بحمايته — والخيار الخاطئ يكلفه الأصل الصحيح</div>
+    </div>
+    <div class="step-body">
+      <div class="step-story">
+        المؤسس يعرف أن لديه شيئاً يستحق الحماية. لكنه لا يعرف بالضبط ما هو. هل هو الاسم؟ الكود؟ الفكرة؟ الطريقة؟ يجلس أمام شاشته ويحاول تحديد من أين يبدأ — ويخشى أن يدفع مقابل حماية الشيء الخطأ بينما الشيء الحقيقي يظل مكشوفاً.
+        <br><br>
+        <strong>هذه اللحظة — الصمت قبل أي خطوة — هي أكثر اللحظات كلفةً على الإطلاق.</strong> لأنها تحدث قبل كل شيء آخر. وكل قرار خاطئ فيها يتراكم لاحقاً.
+      </div>
+
+      <div class="gap gap-crit open">
+        <div class="gap-header" onclick="toggleGap(this)">
+          <span class="gap-label">فجوة حرجة</span>
+          <span class="gap-statement">لا يستطيع تحديد ما إذا كانت ميزته التقنية قابلة للحماية — أم أن أحداً سبقه</span>
+          <span class="gap-chevron">▾</span>
+        </div>
+        <div class="gap-details">
+          <div class="gap-row">
+            <div class="gap-row-label">ما يخسره</div>
+            <div class="gap-row-text">يُضيّع أسابيع — أحياناً أشهراً — في بناء ميزة ظناً منه أنها حصرية، ليكتشف لاحقاً أن براءة مشابهة مسجلة. القرار الخاطئ في هذه اللحظة يُلغي جهد التطوير بالكامل.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما يجده اليوم</div>
+            <div class="gap-row-text">قواعد بيانات USPTO و WIPO معقدة وتتطلب خبرة قانونية لتفسير النتائج. المحامي يكلف بالساعة. لا أداة تُبسّط هذا البحث للمؤسس غير القانوني.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما ينتظره السوق</div>
+            <div class="gap-waiting">تقليل الوقت اللازم لتحديد ما إذا كانت الميزة التقنية أو الاسم التجاري قابلين للحماية — من أسابيع إلى ساعات — دون الحاجة لخبرة قانونية مسبقة</div>
+          </div>
+          <div class="gap-evidence">مبني على: بحث رقمي عام — PatentPC, WIPO, SVB Startup Insights · 4+ مصادر مستقلة</div>
+        </div>
+      </div>
+
+      <div class="gap gap-crit">
+        <div class="gap-header" onclick="toggleGap(this)">
+          <span class="gap-label">فجوة حرجة</span>
+          <span class="gap-statement">يُغفل حماية أصل تنافسي حاسم لأنه لم يُدرك أنه يستحق الحماية أصلاً</span>
+          <span class="gap-chevron">▾</span>
+        </div>
+        <div class="gap-details">
+          <div class="gap-row">
+            <div class="gap-row-label">ما يخسره</div>
+            <div class="gap-row-text">المنافس يسجّل ما بناه المؤسس قبله — لأن المؤسس لم يعرف أن هذا الشيء كان قابلاً للحماية. الخسارة لا تُسترد بعد تسجيل الطرف الآخر.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما يجده اليوم</div>
+            <div class="gap-row-text">لا أداة توجيهية تمشي مع المؤسس خطوة بخطوة وتقول: "هذا الذي بنيته — هل تعرف أنه يمكن تسجيله؟" المحتوى التعليمي المتاح عام وغير مخصص.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما ينتظره السوق</div>
+            <div class="gap-waiting">تقليل احتمالية إغفال حماية أصل تنافسي — بنظام استكشاف تلقائي يعمل بالتوازي مع بناء المنتج، لا بعده</div>
+          </div>
+          <div class="gap-evidence">مبني على: بحث رقمي عام — Mintz IP Guide, SVB, Nyemaster · 5+ مصادر</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 4 — CONFLICT CHECK (HIGHEST SCORE) -->
+  <div class="step-block">
+    <div class="step-header">
+      <span class="step-tag">اللحظة الرابعة · الأعلى خطورة</span>
+      <div class="step-headline">التعارض التجاري يُكتشف بعد الإطلاق — وبعد صرف الميزانية كلها على بناء البراند</div>
+    </div>
+    <div class="step-body">
+      <div class="step-story">
+        الشركة تُطلق. البراند يبدو قوياً. المستخدمون يتفاعلون. ثم يأتي الإشعار القانوني. شركة أخرى تمتلك علامة تجارية مطابقة أو مشابهة — مسجلة قبل ثلاث سنوات — في السوق ذاته.
+        <br><br>
+        <strong>هذه اللحظة تقتل صفقات الاستثمار في مرحلة Due Diligence.</strong> المستثمر يرى المخاطرة القانونية ولا يُغلق. البراند يُعاد من الصفر. الوقت والمال يُهدران — لمشكلة كان يمكن اكتشافها في ساعات قبل الإطلاق.
+      </div>
+
+      <div class="gap gap-crit open">
+        <div class="gap-header" onclick="toggleGap(this)">
+          <span class="gap-label">فجوة حرجة — الأعلى أولوية</span>
+          <span class="gap-statement">يكتشف التعارض في العلامة التجارية بعد الإطلاق وبعد الاستثمار في بناء الهوية</span>
+          <span class="gap-chevron">▾</span>
+        </div>
+        <div class="gap-details">
+          <div class="gap-row">
+            <div class="gap-row-label">ما يخسره</div>
+            <div class="gap-row-text">إعادة بناء البراند كاملاً — اسم، شعار، نطاق، حسابات اجتماعية، مواد تسويقية — بعد أن صرف عليها. وهذا قد يُوقف صفقة استثمار في مرحلة متقدمة.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما يجده اليوم</div>
+            <div class="gap-row-text">قاعدة TESS للمراجعة اليدوية متاحة — لكنها معقدة، وتتطلب معرفة بالفئات التجارية الصحيحة، ولا تُغطي أسواقاً متعددة في آنٍ واحد. الكثير من المؤسسين لا يعلمون بوجودها حتى يفوت الأوان.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما ينتظره السوق</div>
+            <div class="gap-waiting">تقليل الوقت اللازم للتحقق من تعارضات العلامة التجارية في أسواق متعددة — قبل أي قرار بناء هوية — من أيام إلى دقائق، بدون خبرة قانونية</div>
+          </div>
+          <div class="gap-evidence">مبني على: بحث رقمي عام — WIPO, Mintz, SVB, Nyemaster "A1 Motorcycles" case · 6+ مصادر</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 8 — MAINTENANCE -->
+  <div class="step-block">
+    <div class="step-header">
+      <span class="step-tag">اللحظة الثامنة</span>
+      <div class="step-headline">التسجيل يسقط بصمت — والمؤسس لا يعلم حتى يفوته الموعد بأشهر</div>
+    </div>
+    <div class="step-body">
+      <div class="step-story">
+        التسجيل مكتمل. الشركة تنمو. الفريق يركّز على المنتج والمبيعات. ثم في يوم عادي، يصل إشعار من مكتب الملكية الفكرية: موعد التجديد فات. التسجيل مُلغى. لا يمكن إحياؤه.
+        <br><br>
+        <strong>ما بُني على مدار سنوات — يسقط بسبب موعد لم يُتابَع.</strong> وما أصعب أن تُخبر المستثمر أن حصنك التنافسي سقط لأنك نسيت البريد الإلكتروني.
+      </div>
+
+      <div class="gap gap-crit open">
+        <div class="gap-header" onclick="toggleGap(this)">
+          <span class="gap-label">فجوة حرجة</span>
+          <span class="gap-statement">يفقد حماية قائمة بسبب تفويت موعد تجديد — وهو فقدان لا يُسترد</span>
+          <span class="gap-chevron">▾</span>
+        </div>
+        <div class="gap-details">
+          <div class="gap-row">
+            <div class="gap-row-label">ما يخسره</div>
+            <div class="gap-row-text">التسجيل لا يمكن إعادته بعد انتهاء المهلة في كثير من الولايات القضائية. الخسارة دائمة. وقد تُبطل جولة استثمار في مرحلة متقدمة.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما يجده اليوم</div>
+            <div class="gap-row-text">إشعارات بريد إلكتروني من مكاتب الملكية الفكرية — تصل في وسط بريد مزدحم. لا نظام تنبيه مستقل يتتبع المواعيد بشكل منهجي عبر أسواق متعددة.</div>
+          </div>
+          <div class="gap-row">
+            <div class="gap-row-label">ما ينتظره السوق</div>
+            <div class="gap-waiting">تقليل احتمالية فقدان تسجيل قائم بسبب موعد — بنظام تنبيه متدرج (90، 30، 7 أيام) لكل ملكية في كل سوق، بدون أي إجراء يدوي</div>
+          </div>
+          <div class="gap-evidence">مبني على: بحث رقمي عام — USPTO Warning Policy, upcounsel.com, FasterCapital · 5+ مصادر</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- PAGE 6 — LANDSCAPE -->
+<div class="page" id="landscape">
+  <div class="sec-label">خارطة الفرص — أين تتمركز الفجوات</div>
+
+  <div class="landscape-wrap">
+    <svg id="landscape-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" style="display:block">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#7C78A8" stroke-width="1.5"/>
+        </marker>
+      </defs>
+
+      <!-- Background zones -->
+      <rect x="60" y="30" width="520" height="340" fill="#F7F7FC" rx="8"/>
+
+      <!-- Zone: overserved upper-left -->
+      <rect x="60" y="30" width="260" height="170" fill="rgba(124,120,168,0.06)" rx="8"/>
+      <text x="190" y="120" text-anchor="middle" font-size="11" fill="#7C78A8" font-family="IBM Plex Sans Arabic,sans-serif">مُخدوم بشكل كافٍ</text>
+
+      <!-- Zone: underserved lower-right -->
+      <rect x="320" y="200" width="260" height="170" fill="rgba(77,221,223,0.08)" rx="8"/>
+      <text x="450" y="300" text-anchor="middle" font-size="11" fill="#0F6E56" font-weight="500" font-family="IBM Plex Sans Arabic,sans-serif">غير مخدوم ← فرصة</text>
+
+      <!-- Diagonal separator -->
+      <line x1="60" y1="370" x2="580" y2="30" stroke="#7C78A8" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+      <!-- X axis -->
+      <line x1="60" y1="370" x2="580" y2="370" stroke="#3D3A6B" stroke-width="0.5" marker-end="url(#arr)"/>
+      <text x="590" y="374" font-size="11" fill="#3D3A6B" font-family="IBM Plex Sans Arabic,sans-serif">الأهمية</text>
+      <text x="60" y="390" font-size="10" fill="#7C78A8" font-family="IBM Plex Sans Arabic,sans-serif">منخفضة</text>
+      <text x="510" y="390" font-size="10" fill="#7C78A8" font-family="IBM Plex Sans Arabic,sans-serif">عالية</text>
+
+      <!-- Y axis -->
+      <line x1="60" y1="370" x2="60" y2="30" stroke="#3D3A6B" stroke-width="0.5" marker-end="url(#arr)"/>
+      <text x="10" y="200" font-size="11" fill="#3D3A6B" writing-mode="tb" font-family="IBM Plex Sans Arabic,sans-serif">الرضا الحالي</text>
+      <text x="45" y="368" font-size="10" fill="#7C78A8" text-anchor="end" font-family="IBM Plex Sans Arabic,sans-serif">منخفض</text>
+      <text x="45" y="55" font-size="10" fill="#7C78A8" text-anchor="end" font-family="IBM Plex Sans Arabic,sans-serif">عالٍ</text>
+
+      <!-- Gap dots — underserved zone -->
+      <!-- Conflict Check — score 16, highest -->
+      <circle cx="500" cy="330" r="14" fill="#D85A30" opacity="0.85"/>
+      <text x="500" y="334" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">16</text>
+      <text x="500" y="360" text-anchor="middle" font-size="10" fill="#993C1D" font-family="IBM Plex Sans Arabic,sans-serif">التحقق من التعارضات</text>
+
+      <!-- Identify what to protect — score 15 -->
+      <circle cx="460" cy="310" r="13" fill="#D85A30" opacity="0.75"/>
+      <text x="460" y="314" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">15</text>
+      <text x="380" y="295" text-anchor="middle" font-size="10" fill="#993C1D" font-family="IBM Plex Sans Arabic,sans-serif">تحديد ما يستحق الحماية</text>
+
+      <!-- Maintenance / renewals — score 15 -->
+      <circle cx="430" cy="280" r="13" fill="#D85A30" opacity="0.70"/>
+      <text x="430" y="284" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">15</text>
+      <text x="350" y="268" text-anchor="middle" font-size="10" fill="#993C1D" font-family="IBM Plex Sans Arabic,sans-serif">الحفاظ على التسجيلات</text>
+
+      <!-- Gathering evidence — score 14 -->
+      <circle cx="390" cy="250" r="11" fill="#BA7517" opacity="0.80"/>
+      <text x="390" y="254" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">14</text>
+      <text x="310" y="245" text-anchor="middle" font-size="10" fill="#854F0B" font-family="IBM Plex Sans Arabic,sans-serif">إثبات الملكية</text>
+
+      <!-- Monitoring status — score 13 -->
+      <circle cx="420" cy="220" r="10" fill="#BA7517" opacity="0.70"/>
+      <text x="420" y="224" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">13</text>
+      <text x="500" y="215" text-anchor="middle" font-size="10" fill="#854F0B" font-family="IBM Plex Sans Arabic,sans-serif">متابعة الحالة</text>
+
+      <!-- Understanding procedures — score 13 -->
+      <circle cx="360" cy="210" r="10" fill="#BA7517" opacity="0.65"/>
+      <text x="360" y="214" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">13</text>
+      <text x="270" y="215" text-anchor="middle" font-size="10" fill="#854F0B" font-family="IBM Plex Sans Arabic,sans-serif">فهم الإجراءات</text>
+
+      <!-- Filing — score 11 -->
+      <circle cx="330" cy="180" r="9" fill="#0F6E56" opacity="0.7"/>
+      <text x="330" y="184" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">11</text>
+
+      <!-- Handling issues — score 11 -->
+      <circle cx="300" cy="200" r="9" fill="#0F6E56" opacity="0.7"/>
+      <text x="300" y="204" text-anchor="middle" font-size="9" fill="white" font-family="IBM Plex Sans Arabic,sans-serif">11</text>
+
+      <!-- Legend -->
+      <circle cx="80" cy="50" r="7" fill="#D85A30" opacity="0.85"/>
+      <text x="92" y="54" font-size="10" fill="#993C1D" font-family="IBM Plex Sans Arabic,sans-serif">فجوة حرجة (15-16)</text>
+      <circle cx="80" cy="70" r="6" fill="#BA7517" opacity="0.80"/>
+      <text x="92" y="74" font-size="10" fill="#854F0B" font-family="IBM Plex Sans Arabic,sans-serif">فجوة مهمة (11-14)</text>
+      <circle cx="80" cy="88" r="5" fill="#0F6E56" opacity="0.70"/>
+      <text x="92" y="92" font-size="10" fill="#0F6E56" font-family="IBM Plex Sans Arabic,sans-serif">فجوة قابلة للمتابعة</text>
+
+      <!-- Size = opportunity score label -->
+      <text x="580" y="395" text-anchor="end" font-size="9" fill="#7C78A8" font-family="IBM Plex Sans Arabic,sans-serif">حجم الدائرة = درجة الفرصة</text>
+    </svg>
+
+    <div class="landscape-disclaimer">
+      ملاحظة: درجات الأهمية والرضا مبنية على تحليل رقمي لمصادر عامة. التحقق الميداني بمقابلات منظمة متاح كمستوى ثانٍ ويرفع دقة هذه الأرقام.
+    </div>
+  </div>
+
+  <div class="landscape-insight">
+    <p>النمط الجذري الذي تكشفه جميع الفجوات معاً: <strong>المؤسس لا يعاني من نقص في الأدوات — يعاني من نقص في اليقين في اللحظة الصحيحة.</strong> اللحظة التي يحتاج فيها قراراً واضحاً (ما الذي أحمي؟ هل هناك تعارض؟ هل انتهى موعد تجديدي؟) هي بالضبط اللحظة التي يجد فيها البدائل الحالية غامضة، بطيئة، أو تتطلب وسيطاً يحصل على الإجابة بدلاً منه.</p>
+    <p>الحلول القائمة تقع في خانة "مُخدوم بشكل كافٍ" للمؤسسين الذين يملكون محامين متخصصين أو تجربة سابقة. لكن الشريحة الأوسع — المؤسسون في مرحلة Pre-seed إلى Series A — تقع في الزاوية السفلى اليمنى: أهمية عالية، رضا منخفض، ولا منتج حالي يعالج ذلك بمستوى التجربة المطلوب.</p>
+  </div>
+</div>
+
+<!-- PAGE 7 — OPPORTUNITY SIZE -->
+<div class="page" id="size">
+  <div class="sec-label">حجم الفرصة غير المخدومة</div>
+
+  <div class="calc-grid">
+    <div class="calc-block">
+      <div class="calc-icon">◎</div>
+      <div class="calc-label">من يعاني</div>
+      <div class="calc-number">500 – 800</div>
+      <div class="calc-note">مؤسس نشط يدخل مرحلة Pre-seed إلى Series A سنوياً في السوق السعودي — بافتراض نمو 20% سنوياً بدعم Vision 2030 وصناديق SVC</div>
+    </div>
+    <div class="calc-block">
+      <div class="calc-icon">↻</div>
+      <div class="calc-label">كم مرة يواجهه</div>
+      <div class="calc-number">4 – 6 مرات</div>
+      <div class="calc-note">قرارات حماية سنوياً لكل مؤسس: ميزة جديدة، علامة تجارية، سوق جديد، تجديد، تعديل. عدد القرارات يرتفع مع نمو الشركة</div>
+    </div>
+    <div class="calc-block">
+      <div class="calc-icon">◈</div>
+      <div class="calc-label">ماذا يخسر في كل مرة</div>
+      <div class="calc-number">أسابيع + قرار</div>
+      <div class="calc-note">2-4 أسابيع تأخير في كل قرار حماية، خطر إلغاء تسجيل أو خسارة صفقة استثمار. الخسارة المرجعية: إعادة بناء براند = 10,000 – 50,000 دولار و 3-6 أشهر</div>
+    </div>
+  </div>
+
+  <div class="synthesis-box">
+    <div class="synthesis-label">تقدير حجم الفرصة</div>
+    <div class="synthesis-text">بجمع هذه العوامل: الفرصة غير المخدومة في السوق السعودي تُقدَّر بـ <strong>2,000 – 4,800 قرار حماية سنوياً غير مُدار بشكل احترافي</strong> — بافتراض أن 80% من المؤسسين لا يملكون نظاماً منهجياً لإدارة ملكيتهم الفكرية. هذا الرقم قابل للتحقق الميداني في المستوى الثاني.</div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">نافذة الدخول — لماذا الآن؟</div>
+    <div class="info-box-text">النمو الحاد في صناديق رأس المال المخاطر السعودية (SVC، صندوق الاستثمارات العامة، Wa'ed) يعني أن عدد المؤسسين الذين يُعدّون لجولات استثمار يرتفع سنة بعد سنة. كل مؤسس يتحضر لجولة يصبح عميلاً بألم حاد ومباشر — لأن المستثمر يسأل عن حالة IP في أول اجتماع Due Diligence. لا يوجد اليوم منتج يحل هذا الألم بالمستوى والتجربة المطلوبين.</div>
+  </div>
+</div>
+
+<!-- PAGE 8 — VERDICT -->
+<div class="page" id="verdict">
+  <div class="sec-label">التوصية الاستراتيجية</div>
+
+  <div class="strategy-box">
+    <div class="strategy-name">استراتيجية التخصص المركّز — Discrete</div>
+    <div class="strategy-text">
+      البيانات تشير بوضوح إلى فرصة واحدة أعلى من كل الفجوات الأخرى: التحقق من التعارضات التجاري قبل الإطلاق. هذه الفجوة الأعلى في درجة الفرصة والأقل في المنافسة المباشرة. بناء moatly حول حلها بعمق — قبل التوسع — هو الطريق الأسرع لـ Product-Market Fit حقيقي وقابل للقياس.
+      <br><br>
+      في التطبيق: اجعل "Conflict Scan" الميزة التي تُعرَّف بها moatly في الأشهر الأولى. ليس لأنها الوحيدة — بل لأنها الأوضح ألماً والأسرع قيمةً للمؤسس.
+    </div>
+  </div>
+
+  <div class="what-box">
+    <div class="what-cols">
+      <div class="what-col">
+        <div class="what-col-title">يُثبت هذا التقرير</div>
+        <ul class="what-list">
+          <li>وجود حاجات حقيقية غير مُلباة في مراحل محددة من رحلة المؤسس</li>
+          <li>الفجوات ذات الأولوية الأعلى مرتبة بالأهمية والرضا</li>
+          <li>تقدير أولي لحجم الفرصة غير المخدومة في السوق السعودي</li>
+          <li>غياب منافس مباشر يجمع الاكتشاف والمتابعة والتنبيه في منتج واحد</li>
+        </ul>
+      </div>
+      <div class="what-col">
+        <div class="what-col-title">لا يُثبته هذا التقرير</div>
+        <ul class="what-list">
+          <li>الدرجات الدقيقة للأهمية والرضا — تستلزم مسحاً ميدانياً</li>
+          <li>التحقق من Willingness to Pay وسعر الدخول الأمثل</li>
+          <li>أي توصية بمنتج أو حل تقني محدد</li>
+          <li>تحليل شرائحي — أي شريحة من المؤسسين تعاني أكثر</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier active">
+      <div class="tier-head">
+        <div class="tier-num">المستوى الأول · هذا التقرير</div>
+        <div class="tier-name">خريطة فرصة السوق</div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-q">"هل هناك سوق حقيقي وأين يقع الألم؟"</div>
+        <ul class="tier-items">
+          <li>تحليل رقمي لثمانية لحظات في رحلة المؤسس</li>
+          <li>42 فجوة مدروسة ومرتبة بالأولوية</li>
+          <li>خارطة الفرص + تقدير حجم السوق</li>
+          <li>التوصية الاستراتيجية</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-head">
+        <div class="tier-num">المستوى الثاني · متاح عند الطلب</div>
+        <div class="tier-name">قياس ميداني</div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-q">"ما الدرجة الدقيقة؟ أي مؤسس يعاني أكثر؟ ما حدّ الدفع؟"</div>
+        <ul class="tier-items">
+          <li>5-8 مقابلات منظمة مع مؤسسين</li>
+          <li>درجات دقيقة للأهمية والرضا</li>
+          <li>تحليل شرائحي + تقدير WTP</li>
+          <li>مسح كمي 60-100 مشارك</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-head">
+        <div class="tier-num">المستوى الثالث · يبدأ بعد الثاني</div>
+        <div class="tier-name">استراتيجية الدخول</div>
+      </div>
+      <div class="tier-body">
+        <div class="tier-q">"كيف ندخل بأقل مخاطرة وأعلى تمييز؟"</div>
+        <ul class="tier-items">
+          <li>تحليل شرائحي كامل + تحديد المواقع</li>
+          <li>خارطة نمو قابلة للتنفيذ</li>
+          <li>توصيات Product Roadmap</li>
+          <li>Portfolio fit للمستثمرين</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-block">
+    <div class="closing-block-text">
+      المستوى الثاني يُنتج الأرقام الدقيقة التي يحتاجها فريق moatly لاتخاذ قرار الميزة الأولى بثقة: كم مؤسساً يعاني من التعارض التجاري تحديداً؟ وكم يدفعون لحله؟ <strong>يمكن البدء فور الموافقة.</strong>
+    </div>
+    <div class="closing-cta">ابدأ المستوى الثاني</div>
+  </div>
+</div>
+
+<!-- PAGE 9 — METHODOLOGY -->
+<div class="page" id="methodology">
+  <div class="sec-label">خلاصة القرار · المنهجية · المصادر</div>
+
+  <div class="verdict-box">
+    <div class="verdict-label">خلاصة القرار</div>
+    <div class="verdict-text">المؤسس الذي تستهدفه moatly يعاني من ألم موثق وحقيقي عند ثلاث نقاط محددة: عدم معرفة ما الذي يحمي، فوات اكتشاف التعارض، وفقدان تسجيل بسبب موعد. هذا الألم غير مخدوم بأي منتج متكامل في السوق السعودي اليوم. الفرصة موجودة وموثقة — الخطوة الوحيدة المفقودة قبل الالتزام بالميزة الأولى هي قياس Willingness to Pay بمقابلات ميدانية.</div>
+  </div>
+
+  <p class="method-text">رسمنا خريطة كاملة لما يحاول المؤسس إنجازه خطوة بخطوة — من اللحظة التي يُحدد فيها ما يستحق الحماية إلى اليوم الذي يحافظ فيه على ما سجّله. ثم بحثنا في مصادر مستقلة عن الأماكن التي يتوقف فيها هذا العمل أو يسير بصعوبة. اشترطنا ثلاثة مصادر مستقلة لكل نتيجة قبل تضمينها في التقرير.</p>
+
+  <div class="source-grid">
+    <div class="source-block">
+      <div class="source-title">مصادر الأهمية</div>
+      <ul class="source-list">
+        <li>PatentPC Blog <span class="src-type">رقمي</span></li>
+        <li>WIPO Startup Articles <span class="src-type">رقمي</span></li>
+        <li>SVB Startup Insights <span class="src-type">رقمي</span></li>
+        <li>Mintz IP Guide <span class="src-type">رقمي</span></li>
+        <li>Lexology IP Strategy <span class="src-type">رقمي</span></li>
+      </ul>
+    </div>
+    <div class="source-block">
+      <div class="source-title">مصادر الرضا والبدائل</div>
+      <ul class="source-list">
+        <li>USPTO TESS Database <span class="src-type">عام</span></li>
+        <li>FounderShield IP Pitfalls <span class="src-type">رقمي</span></li>
+        <li>Nyemaster Startup Guide <span class="src-type">رقمي</span></li>
+        <li>FasterCapital IP Guide <span class="src-type">رقمي</span></li>
+        <li>PointLegal Checklist <span class="src-type">رقمي</span></li>
+      </ul>
+    </div>
+    <div class="source-block">
+      <div class="source-title">مصادر السوق</div>
+      <ul class="source-list">
+        <li>SVC Annual Data <span class="src-type">عام</span></li>
+        <li>Monshaat Reports <span class="src-type">عام</span></li>
+        <li>ArentFox Tech IP Guide <span class="src-type">رقمي</span></li>
+        <li>WIPO IP Podcast <span class="src-type">رقمي</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="path-map">
+    <div class="path-row">
+      <div class="path-level">المستوى الأول</div>
+      <div class="path-text"><strong>يُجيب على: هل الفرصة موجودة؟</strong> — هذا التقرير. الإجابة: نعم، في ثلاث نقاط محددة وموثقة.</div>
+    </div>
+    <div class="path-row">
+      <div class="path-level">المستوى الثاني</div>
+      <div class="path-text"><strong>يُجيب على: ما حجمها بدقة؟ وأين الشريحة الأكثر ألماً؟</strong> — مقابلات ميدانية 5-8، درجات دقيقة، Willingness to Pay.</div>
+    </div>
+    <div class="path-row">
+      <div class="path-level">المستوى الثالث</div>
+      <div class="path-text"><strong>يُجيب على: كيف تدخل وتفوز؟</strong> — استراتيجية دخول كاملة، تحديد مواقع، خارطة نمو.</div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    المنهجية المستخدمة: الابتكار القائم على المخرجات ونظريات الوظيفة. تصنيف الفرص مبني على قياس درجة الأهمية وفجوة الرضا. التفاصيل الكاملة متاحة عند الطلب.
+  </div>
+</div>
+
+</div><!-- end doc -->
+
+<div class="footer-bar">
+  <span>The Lens · علي الغامدي</span>
+  <span>moatly™ — خريطة فرصة السوق · مايو 2026</span>
+  <span>INSIGHT-GRADE · بحث رقمي · <span style="color:rgba(255,255,255,0.4)">لا توصية باستثمار</span></span>
+</div>
+
+<script>
+  function toggleGap(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
